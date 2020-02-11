@@ -122,4 +122,12 @@ void hardware_command_stop_light(int on);
  */
 void hardware_command_order_light(int floor, HardwareOrder order_type, int on);
 
+/**
+ * @brief Gets the current floor. 
+ *
+ * @return Return current floor. If no current floor return 0.
+ */
+
+int hardware_get_current_floor();
+
 #endif
