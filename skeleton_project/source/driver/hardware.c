@@ -1,4 +1,5 @@
 #include "hardware.h"
+#include "fsm.h"
 #include "channels.h"
 #include "io.h"
 
