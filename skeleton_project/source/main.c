@@ -19,6 +19,7 @@ int main(){
     int order_array[4];
 
     while(1){
+        hardware_handle_stop_light();
         switch(state){
             case IDLE:
                 // orders_update_order_array();

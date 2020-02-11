@@ -215,3 +215,6 @@ int hardware_get_button_count(){
     return BUTTON_COUNT;
 }
 
+void hardware_handle_stop_light(){
+    hardware_command_stop_light(hardware_read_stop_signal());
+}

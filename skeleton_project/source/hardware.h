@@ -134,6 +134,8 @@ int hardware_get_floor_count();
 
 int hardware_get_button_count();
 
+void hardware_handle_stop_light();
+
 
 
 
