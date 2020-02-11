@@ -14,22 +14,56 @@ int main(){
         exit(1);
     }
 
-    printf("=== Example Program ===\n");
-    printf("Press the stop button on the elevator panel to exit\n");
+    CurrentState state = IDLE;
 
-    hardware_command_movement(HARDWARE_MOVEMENT_UP);
+    int order_array[4];
 
     while(1){
-        if(hardware_read_stop_signal()){
-            hardware_command_movement(HARDWARE_MOVEMENT_STOP);
-            break;
-        }
+        switch(state){
+            case IDLE:
+                // orders_update_order_array();
+                // for loop check order_array
+                // if not zero -> switch state
+                break;
+            
+            case RUNNING:
+                // orders_update_order_array();
+                break;
 
-        if(hardware_read_floor_sensor(0)){
-            hardware_command_movement(HARDWARE_MOVEMENT_UP);
+            case DOOR:
+                // orders_update_order_array();
+                break;
+
+            case EMERGENCY_STOP:
+                /* if (stopButton){
+                    stop motor
+                    orders_delete_all_orders()
+                    enable stop light
+                }else {
+                    disable stop light
+                    if (hardware_get_current_floor()){
+                        set timer for 3 sec.
+                        fsm_state_switch(DOOR);
+                    }else{
+                        fsm_state_switch(IDLE);
+                    }
+                }
+                */
+                break;
+
+            case OBSTRUCT:
+                // orders_update_order_array();
+                /*
+                if (hardware_get_current_floor()){
+                        set timer for 3 sec.
+                        fsm_state_switch(DOOR);
+                    }else{
+                        fsm_state_switch(IDLE);
+                    }
+                */
+                break;
+
         }
-        if(hardware_read_floor_sensor(HARDWARE_NUMBER_OF_FLOORS - 1)){
-            hardware_command_movement(HARDWARE_MOVEMENT_DOWN);
-        }
+        
     }
 }

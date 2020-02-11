@@ -12,4 +12,4 @@ typedef enum {
     OBSTRUCT
 } CurrentState;
 
-void fsm_state_switch();
+void fsm_state_switch(CurrentState state);
