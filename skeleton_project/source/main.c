@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "hardware.h"
 #include "fsm.h"
+#include "orders.h"
+
 
 int main(){
 

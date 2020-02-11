@@ -5,6 +5,9 @@
 
 #include <stdlib.h>
 
+int FLOOR_COUNT = 4;
+int BUTTON_COUNT = 3;
+
 static int hardware_legal_floor(int floor, HardwareOrder order_type){
     int lower_floor = 0;
     int upper_floor = HARDWARE_NUMBER_OF_FLOORS - 1;
@@ -195,10 +198,20 @@ void hardware_command_order_light(int floor, HardwareOrder order_type, int on){
 
 
 int hardware_get_current_floor(){
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < FLOOR_COUNT; i++){
         if(hardware_read_floor_sensor(i+1)){
             return i+1;
         }
     }
     return 0;
 }
+
+
+int hardware_get_floor_count(){
+    return FLOOR_COUNT;
+}
+
+int hardware_get_button_count(){
+    return BUTTON_COUNT;
+}
+

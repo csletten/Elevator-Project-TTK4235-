@@ -130,4 +130,12 @@ void hardware_command_order_light(int floor, HardwareOrder order_type, int on);
 
 int hardware_get_current_floor();
 
+int hardware_get_floor_count();
+
+int hardware_get_button_count();
+
+
+
+
+
 #endif
