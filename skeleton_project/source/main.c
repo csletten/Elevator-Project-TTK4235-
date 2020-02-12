@@ -23,10 +23,21 @@ int main(){
         //hardware_handle_stop_light();
         switch(state){
             case IDLE:
-                // orders_update_order_array();
-                // for loop check order_array
-                // if not zero -> switch state
+                /*
+                hardware_command_movement(HARDWARE_MOVEMENT_STOP);
+                hardware_command_door_open(0);
+                orders_update_order_array();
+                for(int i = 0; i < order_array.size(); ++i){
+                    if(!order_array[i]){
+                        if(hardware_get_current_floor() == i+1){
+                            fsm_state_switch(DOOR);
+                        } else{
+                            fsm_state_switch(RUNNING);
+                        } 
+                    }
+                }
                 break;
+                */
             
             case RUNNING:
                 // orders_update_order_array();
