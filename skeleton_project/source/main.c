@@ -3,6 +3,7 @@
 #include "hardware.h"
 #include "fsm.h"
 #include "orders.h"
+#include <time.h>
 
 
 int main(){
@@ -19,7 +20,7 @@ int main(){
     int order_array[4];
 
     while(1){
-        hardware_handle_stop_light();
+        //hardware_handle_stop_light();
         switch(state){
             case IDLE:
                 // orders_update_order_array();
@@ -36,18 +37,26 @@ int main(){
                 break;
 
             case EMERGENCY_STOP:
-                /* if (stopButton){
-                    stop motor
-                    orders_delete_all_orders()
-                    enable stop light
-                }else {
-                    disable stop light
-                    if (hardware_get_current_floor()){
-                        set timer for 3 sec.
-                        fsm_state_switch(DOOR);
-                    }else{
-                        fsm_state_switch(IDLE);
+                /*
+                STOP MOTOR
+                orders_delete_all_orders()
+                hardware_handle_stop_light();
+                if(hardware_get_current_floor()){
+                    while(stopButton){
+                        hardware_command_door_open(1);
+                        hardware_handle_stop_light();
                     }
+                    int msec = 0, trigger = 3000;
+                    clock_t before = clock();
+                    while ( msec < trigger ){
+                        clock_t difference = clock() - before;
+                        msec = difference * 1000 / CLOCKS_PER_SEC;
+                        hardware_command_door_open(1);
+                    }
+                    hardware_command_door_open(0);
+                    fsm_state_switch(IDLE);
+                } else{
+                    fsm_state_switch(IDLE);
                 }
                 */
                 break;
