@@ -38,11 +38,11 @@ int main(){
 
             case EMERGENCY_STOP:
                 /*
-                STOP MOTOR
-                orders_delete_all_orders()
+                hardware_command_movement(HARDWARE_MOVEMENT_STOP);
+                orders_delete_all_orders(order_array);
                 hardware_handle_stop_light();
                 if(hardware_get_current_floor()){
-                    while(stopButton){
+                    while(hardware_read_stop_signal()){
                         hardware_command_door_open(1);
                         hardware_handle_stop_light();
                     }
