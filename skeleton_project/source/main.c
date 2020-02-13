@@ -14,17 +14,22 @@ int main(){
         fprintf(stderr, "Unable to initialize hardware\n");
         exit(1);
     }
-
-    CurrentState state = IDLE;
-
-    int order_array[4];
+    while (1)
+    {
+        //hardware_handle_stop_light();
+        set_correct_light_at_floor();
+    }
     
+    // CurrentState state = IDLE;
+
+    //int order_array[4];
+    
+    /*
     while(1){
         set_correct_light_at_floor();
         //hardware_handle_stop_light();
         switch(state){
             case IDLE:
-                /*
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
                 hardware_command_door_open(0);
                 orders_update_order_array();
@@ -38,7 +43,7 @@ int main(){
                     }
                 }
                 break;
-                */
+                
             
             case RUNNING:
                 // orders_update_order_array();
@@ -46,10 +51,9 @@ int main(){
 
             case DOOR:
                 // orders_update_order_array();
-                break;
+                break;s.
 
             case EMERGENCY_STOP:
-                /*
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
                 orders_delete_all_orders(order_array);
                 hardware_handle_stop_light();
@@ -70,22 +74,21 @@ int main(){
                 } else{
                     fsm_state_switch(IDLE);
                 }
-                */
+                
                 break;
 
             case OBSTRUCT:
                 // orders_update_order_array();
-                /*
                 if (hardware_get_current_floor()){
                         set timer for 3 sec.
                         fsm_state_switch(DOOR);
                     }else{
                         fsm_state_switch(IDLE);
                     }
-                */
+                
                 break;
 
         }
         
-    }
+    }*/
 }

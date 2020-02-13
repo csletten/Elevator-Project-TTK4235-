@@ -4,6 +4,7 @@
 #include "io.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
@@ -212,11 +213,15 @@ void hardware_handle_stop_light(){
 
 void set_correct_light_at_floor() {
     for (int i = 0; i < BUTTON_COUNT; ++i){
-        if (hardware_read_order(i+1, HARDWARE_ORDER_UP)) {
-            hardware_command_floor_indicator_on(i+1);
+        if (hardware_read_order(i, HARDWARE_ORDER_UP)) {
+            //hardware_command_floor_indicator_on(i+1);
+            printf("Button pressed on floor %d" , i);
         }
-        if (hardware_read_order(i+2, HARDWARE_ORDER_DOWN)) {
-            hardware_command_floor_indicator_on(i+2);
+    }
+    for (int i = 1; i < BUTTON_COUNT+1; ++i){
+        if (hardware_read_order(i, HARDWARE_ORDER_DOWN)) {
+            //hardware_command_floor_indicator_on(i+2);
+            printf("Button pressed on floor %d" , i);
         }
     }
 }
