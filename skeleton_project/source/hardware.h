@@ -136,7 +136,7 @@ int hardware_get_button_count();
 
 void hardware_handle_stop_light();
 
-
+void set_correct_light_at_floor();
 
 
 

@@ -218,3 +218,19 @@ int hardware_get_button_count(){
 void hardware_handle_stop_light(){
     hardware_command_stop_light(hardware_read_stop_signal());
 }
+
+void set_correct_light_at_floor() {
+    for (int i = 0; i < BUTTON_COUNT; ++i){
+        if (hardware_read_order(i+1, HARDWARE_ORDER_UP)) {
+            hardware_command_floor_indicator_on(i+1);
+        }
+        if (hardware_read_order(i+2, HARDWARE_ORDER_DOWN)) {
+            hardware_command_floor_indicator_on(i+2);
+        }
+    }
+    
+    {
+        /* code */
+    }
+    
+}

@@ -18,8 +18,9 @@ int main(){
     CurrentState state = IDLE;
 
     int order_array[4];
-
+    
     while(1){
+        set_correct_light_at_floor();
         //hardware_handle_stop_light();
         switch(state){
             case IDLE:
