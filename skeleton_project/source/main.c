@@ -19,6 +19,9 @@ int main(){
 
     int order_array[4];
 
+    int FLOOR_COUNT = 4;
+    int BUTTON_COUNT = 3;
+
     while(1){
         //hardware_handle_stop_light();
         switch(state){
