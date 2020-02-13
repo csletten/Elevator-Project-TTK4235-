@@ -206,15 +206,6 @@ int hardware_get_current_floor(){
     return 0;
 }
 
-
-int hardware_get_floor_count(){
-    return FLOOR_COUNT;
-}
-
-int hardware_get_button_count(){
-    return BUTTON_COUNT;
-}
-
 void hardware_handle_stop_light(){
     hardware_command_stop_light(hardware_read_stop_signal());
 }
