@@ -219,9 +219,4 @@ void set_correct_light_at_floor() {
             hardware_command_floor_indicator_on(i+2);
         }
     }
-    
-    {
-        /* code */
-    }
-    
 }
