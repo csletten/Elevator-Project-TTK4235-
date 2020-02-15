@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "hardware.h"
+#include "elevator.h"
 #include "fsm.h"
 #include "orders.h"
 #include "timer.h"

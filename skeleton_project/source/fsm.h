@@ -1,4 +1,4 @@
-#include "hardware.h"
+#include "elevator.h"
 
 #include <stdlib.h>
 /*
