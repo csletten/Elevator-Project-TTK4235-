@@ -3,6 +3,8 @@
 #include "hardware.h"
 #include "fsm.h"
 #include "orders.h"
+#include "timer.h"
+
 #include <time.h>
 
 
@@ -14,12 +16,14 @@ int main(){
         fprintf(stderr, "Unable to initialize hardware\n");
         exit(1);
     }
+    timer_test_timer();
+    /*
     while (1)
     {
         //hardware_handle_stop_light();
         set_correct_light_at_floor();
     }
-    
+    */
     // CurrentState state = IDLE;
 
     //int order_array[4];
@@ -62,12 +66,8 @@ int main(){
                         hardware_command_door_open(1);
                         hardware_handle_stop_light();
                     }
-                    int msec = 0, trigger = 3000;
-                    clock_t before = clock();
-                    while ( msec < trigger ){
-                        clock_t difference = clock() - before;
-                        msec = difference * 1000 / CLOCKS_PER_SEC;
-                        hardware_command_door_open(1);
+                    timer_start_timer(3000);
+                    while(!timer_check_expired){
                     }
                     hardware_command_door_open(0);
                     fsm_state_switch(IDLE);
