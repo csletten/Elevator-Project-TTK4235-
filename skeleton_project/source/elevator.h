@@ -7,9 +7,19 @@
 
 int elevator_get_current_floor();
 
-void hardware_handle_stop_light();
+void set_order_lights_up();
 
-void set_correct_light_at_floor();
+void set_order_lights_down();
+
+void set_order_lights_inside();
+
+void set_stop_light();
+
+void set_lights();
+
+void elevator_startup();
+
+void travel_to_destination(int floor);
 
 void run_elevator();
 
