@@ -1,3 +1,4 @@
 *.o
 elevator
 **/build
+**/vscode
