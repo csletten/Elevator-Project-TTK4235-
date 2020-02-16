@@ -1,13 +1,10 @@
-#include "elevator.h"
+#include "hardware.h"
 #include "fsm.h"
 #include "channels.h"
 #include "io.h"
 
 #include <stdlib.h>
 #include <stdio.h>
-
-int FLOOR_COUNT = 4;
-int BUTTON_COUNT = 3;
 
 static int hardware_legal_floor(int floor, HardwareOrder order_type){
     int lower_floor = 0;
@@ -194,34 +191,5 @@ void hardware_command_order_light(int floor, HardwareOrder order_type, int on){
     }
     else{
         io_clear_bit(light_bit_lookup[floor][type_bit]);
-    }
-}
-
-
-int hardware_get_current_floor(){
-    for(int i = 0; i < FLOOR_COUNT; i++){
-        if(hardware_read_floor_sensor(i+1)){
-            return i+1;
-        }
-    }
-    return 0;
-}
-
-void hardware_handle_stop_light(){
-    hardware_command_stop_light(hardware_read_stop_signal());
-}
-
-void set_correct_light_at_floor() {
-    for (int i = 0; i < BUTTON_COUNT; ++i){
-        if (hardware_read_order(i, HARDWARE_ORDER_UP)) {
-            //hardware_command_floor_indicator_on(i+1);
-            printf("Button pressed on floor %d" , i);
-        }
-    }
-    for (int i = 1; i < BUTTON_COUNT+1; ++i){
-        if (hardware_read_order(i, HARDWARE_ORDER_DOWN)) {
-            //hardware_command_floor_indicator_on(i+2);
-            printf("Button pressed on floor %d" , i);
-        }
     }
 }
