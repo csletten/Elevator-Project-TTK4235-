@@ -7,11 +7,9 @@
 int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
 
-// add ints for up, down and upanddown
-
 static int current_floor = 0;
 static int current_direction = HARDWARE_MOVEMENT_STOP;
-// add FLOOR_COUNT
+
 int elevator_queue[4];
 
 CurrentState state = IDLE;
@@ -121,6 +119,11 @@ void buttons(){
     floor_lights();
 }
 
+void clear_all_orders(){
+    for(int i = 0; i < 4; ++i){
+        elevator_queue[i] = 0;
+    }
+}
 
 void elevator_startup(){
      // Initalize hardware

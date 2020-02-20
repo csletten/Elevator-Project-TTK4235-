@@ -42,6 +42,8 @@ void floor_lights();
 
 void buttons();
 
+void clear_all_orders();
+
 void elevator_startup();
 
 void travel_to_destination(int destination_floor, HardwareMovement direction);
