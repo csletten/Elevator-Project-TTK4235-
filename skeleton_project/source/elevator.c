@@ -187,12 +187,13 @@ void run_elevator(){
             case DOOR:
                 hardware_command_door_open(1);
                 timer_start_timer(3000);
+                elevator_queue[current_floor] = 0;
+                buttons();
                 while(!timer_check_expired()){
                 }
                 if(hardware_read_obstruction_signal()){
                     state = OBSTRUCT;
                 }
-                elevator_queue[current_floor] = 0;
                 hardware_command_door_open(0);
                 for(int i = 0; i < FLOOR_COUNT; ++i){
                     if(elevator_queue[i]){
