@@ -5,12 +5,15 @@
 #include "orders.h"
 #include "timer.h"
 #include "fsm.h"
-#include "lights.h"
+
+int FLOOR_COUNT = 4;
+int BUTTON_COUNT = 3;
 
 static int current_floor = 0;
+int elevator_queue[4];
 
 int elevator_get_current_floor(){
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < FLOOR_COUNT; i++){
         if(hardware_read_floor_sensor(i)){
             return i+1;
         }
@@ -23,6 +26,62 @@ void elevator_set_current_floor(){
         current_floor = elevator_get_current_floor()-1;
     }
 }
+
+void order_buttons_up() {
+    for (int i = 0; i < BUTTON_COUNT; ++i){
+        if (hardware_read_order(i, HARDWARE_ORDER_UP)) {
+            hardware_command_order_light(i, HARDWARE_ORDER_UP, 1);
+            if(elevator_queue[i] == 3 || elevator_queue[i] == 2){
+                elevator_queue[i] = 3;
+            } else{
+                elevator_queue[i] = 1;
+            }
+        }
+    }
+}
+
+void order_buttons_down() {
+    for (int i = 1; i < BUTTON_COUNT+1; ++i){
+        if (hardware_read_order(i, HARDWARE_ORDER_DOWN)) {
+            hardware_command_order_light(i, HARDWARE_ORDER_DOWN, 1);
+            if(elevator_queue[i] == 3 || elevator_queue[i] == 1){
+                elevator_queue[i] = 3;
+            } else{
+                elevator_queue[i] = 2;
+            }
+        }
+    }
+}
+
+void order_buttons_inside(){
+    for(int i = 0; i < BUTTON_COUNT + 1; ++i){
+        if (hardware_read_order(i, HARDWARE_ORDER_INSIDE)) {
+            hardware_command_order_light(i, HARDWARE_ORDER_INSIDE, 1);
+            elevator_queue[i] = 3;
+        }
+    }
+    //hardware_command_order_light(3, HARDWARE_ORDER_INSIDE, 1);
+}
+
+void stop_button(){
+    if(hardware_read_stop_signal()){
+        hardware_command_stop_light(1);
+    }
+}
+
+void floor_lights(){
+    //printf("Current floor: %d ", current_floor);
+    hardware_command_floor_indicator_on(current_floor);
+}
+
+void buttons(){
+    order_buttons_up();
+    order_buttons_down();
+    order_buttons_inside();
+    stop_button();
+    floor_lights();
+}
+
 
 void elevator_startup(){
      // Initalize hardware
@@ -52,17 +111,15 @@ void travel_to_destination(int destination_floor){
 
 void run_elevator(){
     printf("Current floor: %d ", current_floor);
-    set_lights(current_floor);
+    buttons();
     elevator_startup();
     
     while (1)
     {
         printf("Current floor : %d \n ", current_floor);
         elevator_set_current_floor();
-        set_lights(current_floor);
-        travel_to_destination(3);
-        //travel_to_destination(2);
-        //travel_to_destination(1);
+        buttons();
+        travel_to_destination(2);
     }
     // CurrentState state = IDLE;
 
