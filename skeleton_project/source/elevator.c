@@ -148,6 +148,10 @@ void travel_to_destination(int destination_floor, HardwareMovement direction){
         elevator_set_current_floor();
         // new order when already travelling
         hardware_command_movement(direction);
+        if(hardware_read_stop_signal()){
+            state = EMERGENCY_STOP;
+            break;
+        }
     }
     hardware_command_movement(HARDWARE_MOVEMENT_STOP);
 }
@@ -158,8 +162,12 @@ void run_elevator(){
     elevator_startup();
 
     while(1){
+           
         buttons();
         elevator_set_current_floor();
+        if(hardware_read_stop_signal()){
+            state = EMERGENCY_STOP;
+        }
         //printf("UP: %d ", UP);
         switch(state){
             case IDLE:
@@ -177,11 +185,6 @@ void run_elevator(){
                 break;
                 
             case RUNNING:
-
-                // ordre på samme etg
-                // stopper ikke helt nederst
-                // stopper i 2* 3sek hvis man trykker på samme etg
-
                 for(int i = 0; i < FLOOR_COUNT; ++i){
                     if(elevator_queue[i]){
                         if((elevator_queue[i] == 1 || elevator_queue[i] == 3) && i > current_floor && current_direction != HARDWARE_MOVEMENT_DOWN){
@@ -197,9 +200,9 @@ void run_elevator(){
 
             case DOOR:
                 hardware_command_door_open(1);
-                timer_start_timer(3000);
                 elevator_queue[current_floor] = 0;
                 buttons();
+                timer_start_timer(3000);
                 while(!timer_check_expired()){
                     buttons();
                 }
@@ -219,29 +222,31 @@ void run_elevator(){
                         }
                     }
                 }
-                
                 break;
 
             case EMERGENCY_STOP:
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
                 if(elevator_get_current_floor()){
+                    printf("Testing ft. Rocky");
+                    printf("Current floor: %d ", elevator_get_current_floor());
                     while(hardware_read_stop_signal()){
                         hardware_command_door_open(1);
                     }
                     timer_start_timer(3000);
                     while(!timer_check_expired()){
-                        buttons();
                     }
                     hardware_command_door_open(0);   
                 }
+                clear_all_orders();
+                hardware_command_stop_light(0);
                 state = IDLE;
                 break;
 
             case OBSTRUCT:
-                // orders_update_order_array();
                 if (elevator_get_current_floor()){
                         timer_start_timer(3000);
                         while(!timer_check_expired()){
+                            buttons();
                         }
                         state = DOOR;
                     }else{
