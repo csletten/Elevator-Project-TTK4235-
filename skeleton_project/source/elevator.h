@@ -1,3 +1,10 @@
+typedef enum {
+    IDLE,
+    RUNNING,
+    EMERGENCY_STOP,
+    DOOR,
+    OBSTRUCT
+} CurrentState;
 
 /**
  * @brief Gets the current floor. 

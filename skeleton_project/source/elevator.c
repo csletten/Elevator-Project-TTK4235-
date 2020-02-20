@@ -10,7 +10,10 @@ int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
 
 static int current_floor = 0;
+static int current_direction = 0;
 int elevator_queue[4];
+
+CurrentState state = IDLE;
 
 int elevator_get_current_floor(){
     for(int i = 0; i < FLOOR_COUNT; i++){
@@ -24,6 +27,12 @@ int elevator_get_current_floor(){
 void elevator_set_current_floor(){
     if(elevator_get_current_floor()){
         current_floor = elevator_get_current_floor()-1;
+    }
+}
+
+void print_elevator_queue(){
+    for(int i = 0; i < FLOOR_COUNT; ++i){
+        printf("Floor %d, has index %d \n", i+1, elevator_queue[i]);
     }
 }
 
@@ -60,7 +69,6 @@ void order_buttons_inside(){
             elevator_queue[i] = 3;
         }
     }
-    //hardware_command_order_light(3, HARDWARE_ORDER_INSIDE, 1);
 }
 
 void stop_button(){
@@ -113,79 +121,88 @@ void run_elevator(){
     printf("Current floor: %d ", current_floor);
     buttons();
     elevator_startup();
-    
-    while (1)
-    {
-        printf("Current floor : %d \n ", current_floor);
-        elevator_set_current_floor();
-        buttons();
-        travel_to_destination(2);
-    }
-    // CurrentState state = IDLE;
 
-    //int order_array[4];
-    
-    /*
     while(1){
-        set_correct_light_at_floor();
-        //hardware_handle_stop_light();
+        buttons();
         switch(state){
             case IDLE:
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
                 hardware_command_door_open(0);
-                orders_update_order_array();
-                for(int i = 0; i < order_array.size(); ++i){
-                    if(!order_array[i]){
-                        if(hardware_get_current_floor() == i+1){
-                            fsm_state_switch(DOOR);
+                for(int i = 0; i < FLOOR_COUNT; ++i){
+                    if(elevator_queue[i]){
+                        if(elevator_get_current_floor() == i+1){
+                            state = DOOR;
                         } else{
-                            fsm_state_switch(RUNNING);
+                            state = RUNNING;
                         } 
-                    }hardware_get_current_floor
+                    }
                 }
                 break;
                 
-            
             case RUNNING:
-                // orders_update_order_array();
+                for(int i = 0; i < FLOOR_COUNT; ++i){
+                    if(elevator_queue[i]){
+                        if(elevator_get_current_floor() == i+1){
+                            state = DOOR;
+                        } else{
+                            state = RUNNING;
+                        } 
+                    } else{
+                        state = IDLE;
+                    }
+                }
                 break;
 
             case DOOR:
-                // orders_update_order_array();
-                break;s.
+                hardware_command_door_open(1);
+                timer_start_timer(3000);
+                while(!timer_check_expired()){
+                }
+                if(hardware_read_obstruction_signal()){
+                    state = OBSTRUCT;
+                }
+                elevator_queue[current_floor] = 0;
+                hardware_command_door_open(0);
+                for(int i = 0; i < FLOOR_COUNT; ++i){
+                    if(elevator_queue[i]){
+                        if(elevator_get_current_floor() == i+1){
+                            state = DOOR;
+                        } else{
+                            state = RUNNING;
+                        } 
+                    } else{
+                        state = IDLE;
+                    }
+                }
+                break;
 
             case EMERGENCY_STOP:
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
-                orders_delete_all_orders(order_array);
-                hardware_handle_stop_light();
-                if(hardware_get_current_floor()){
+                if(elevator_get_current_floor()){
                     while(hardware_read_stop_signal()){
                         hardware_command_door_open(1);
-                        hardware_handle_stop_light();
                     }
                     timer_start_timer(3000);
-                    while(!timer_check_expired){
+                    while(!timer_check_expired()){
                     }
-                    hardware_command_door_open(0);
-                    fsm_state_switch(IDLE);
-                } else{
-                    fsm_state_switch(IDLE);HARDWARE_MOVEMENT_UP
+                    hardware_command_door_open(0);   
                 }
-                
+                state = IDLE;
                 break;
 
             case OBSTRUCT:
                 // orders_update_order_array();
-                if (hardware_get_current_floor()){
-                        set timer for 3 sec.
-                        fsm_state_switch(DOOR);
+                if (elevator_get_current_floor()){
+                        timer_start_timer(3000);
+                        while(!timer_check_expired()){
+                        }
+                        state = DOOR;
                     }else{
-                        fsm_state_switch(IDLE);
+                        state = IDLE;
                     }
-                
                 break;
 
         }
         
-    }*/
+    }
 }
