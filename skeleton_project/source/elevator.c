@@ -125,6 +125,22 @@ void clear_all_orders(){
     }
 }
 
+int get_destination(){
+    int min_distance = FLOOR_COUNT;
+    int current_distance = 0;
+    int current_destination = -1;
+    for(int i = 0; i < FLOOR_COUNT; ++i){
+        if(elevator_queue[i]){
+            current_distance = abs(current_floor - i);
+            if(current_distance < min_distance && ((current_direction == HARDWARE_MOVEMENT_UP && i > current_floor && elevator_queue == UP || elevator_queue == BOTH_OR_INSIDE) || (current_direction == HARDWARE_MOVEMENT_DOWN && i < current_floor && elevator_queue == DOWN || elevator_queue == BOTH_OR_INSIDE)) || current_direction == HARDWARE_MOVEMENT_STOP)){
+                min_distance = current_distance;
+                current_destination = i;
+            }
+        }
+    }
+    return current_destination;
+}
+
 void elevator_startup(){
      // Initalize hardware
     int error = hardware_init();
@@ -143,9 +159,10 @@ void elevator_startup(){
 
 
 void travel_to_destination(int destination_floor, HardwareMovement direction){
-    while(destination_floor != current_floor){
+    while(destination_floor != current_floor && destination_floor == get_destination()){
         buttons();
         elevator_set_current_floor();
+
         // new order when already travelling
         hardware_command_movement(direction);
         if(hardware_read_stop_signal()){
@@ -172,6 +189,7 @@ void run_elevator(){
             case IDLE:
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
                 hardware_command_door_open(0);
+                current_direction = HARDWARE_MOVEMENT_STOP;
                 for(int i = 0; i < FLOOR_COUNT; ++i){
                     if(elevator_queue[i]){
                         if(elevator_get_current_floor() == i+1){
@@ -184,16 +202,9 @@ void run_elevator(){
                 break;
                 
             case RUNNING:
-                for(int i = 0; i < FLOOR_COUNT; ++i){
-                    if(elevator_queue[i]){
-                        if((elevator_queue[i] == 1 || elevator_queue[i] == 3) && i > current_floor && current_direction != HARDWARE_MOVEMENT_DOWN){
-                            travel_to_destination(i, HARDWARE_MOVEMENT_UP);
-                            state = DOOR;
-                        } else if((elevator_queue[i] == 2 || elevator_queue[i] == 3) && i < current_floor && current_direction != HARDWARE_MOVEMENT_UP){
-                            travel_to_destination(i, HARDWARE_MOVEMENT_DOWN);
-                            state = DOOR;
-                        }
-                    }
+                int selected_destination = get_destination()
+                if(selected_destination != -1){
+                    travel_to_destination(selected_destination);
                 }
                 break;
 
