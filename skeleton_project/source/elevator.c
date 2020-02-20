@@ -162,7 +162,6 @@ void run_elevator(){
     elevator_startup();
 
     while(1){
-           
         buttons();
         elevator_set_current_floor();
         if(hardware_read_stop_signal()){
