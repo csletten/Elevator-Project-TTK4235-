@@ -1,3 +1,5 @@
+#include "hardware.h"
+
 typedef enum {
     IDLE,
     RUNNING,
@@ -18,9 +20,15 @@ void elevator_set_current_floor();
 
 void order_buttons_up();
 
+void clear_order_buttons_up();
+
 void order_buttons_down();
 
+void clear_order_buttons_down();
+
 void order_buttons_inside();
+
+void clear_order_buttons_inside();
 
 void stop_button();
 

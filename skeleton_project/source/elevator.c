@@ -47,6 +47,14 @@ void order_buttons_up() {
     }
 }
 
+void clear_order_buttons_up() {
+    for (int i = 0; i < BUTTON_COUNT; ++i){
+        if(elevator_queue[i]== 0 || elevator_queue[i]== 2){
+            hardware_command_order_light(i, HARDWARE_ORDER_UP, 0);
+        }
+    }
+}
+
 void order_buttons_down() {
     for (int i = 1; i < BUTTON_COUNT+1; ++i){
         if (hardware_read_order(i, HARDWARE_ORDER_DOWN)) {
@@ -60,11 +68,29 @@ void order_buttons_down() {
     }
 }
 
+void clear_order_buttons_down() {
+    for (int i = 1; i < BUTTON_COUNT + 1; ++i){
+        if(elevator_queue[i] == 0 || elevator_queue[i]== 1){
+            hardware_command_order_light(i, HARDWARE_ORDER_DOWN, 0);
+        }
+    }
+}
+
 void order_buttons_inside(){
     for(int i = 0; i < BUTTON_COUNT + 1; ++i){
         if (hardware_read_order(i, HARDWARE_ORDER_INSIDE)) {
             hardware_command_order_light(i, HARDWARE_ORDER_INSIDE, 1);
             elevator_queue[i] = 3;
+            //printf("Inside button on floor %d pressed ", i);
+        }
+    }
+}
+
+
+void clear_order_buttons_inside() {
+    for (int i = 0; i < BUTTON_COUNT + 1; ++i){
+        if(elevator_queue[i] != 3){
+            hardware_command_order_light(i, HARDWARE_ORDER_INSIDE, 0);
         }
     }
 }
@@ -82,8 +108,11 @@ void floor_lights(){
 
 void buttons(){
     order_buttons_up();
+    clear_order_buttons_up();
     order_buttons_down();
+    clear_order_buttons_down();
     order_buttons_inside();
+    clear_order_buttons_inside();
     stop_button();
     floor_lights();
 }
@@ -108,8 +137,10 @@ void elevator_startup(){
 void travel_to_destination(int destination_floor, HardwareMovement direction){
     while(destination_floor != current_floor){
         buttons();
+        elevator_set_current_floor();
         hardware_command_movement(direction);
     }
+    hardware_command_movement(HARDWARE_MOVEMENT_STOP);
 }
 
 void run_elevator(){
@@ -119,6 +150,7 @@ void run_elevator(){
 
     while(1){
         buttons();
+        elevator_set_current_floor();
         switch(state){
             case IDLE:
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
@@ -143,8 +175,10 @@ void run_elevator(){
                     if(elevator_queue[i]){
                         if((elevator_queue[i] == 1 || elevator_queue[i] == 3) && i > current_floor && current_direction != HARDWARE_MOVEMENT_DOWN){
                             travel_to_destination(i, HARDWARE_MOVEMENT_UP);
+                            state = DOOR;
                         } else if((elevator_queue[i] == 2 || elevator_queue[i] == 3) && i < current_floor && current_direction != HARDWARE_MOVEMENT_UP){
                             travel_to_destination(i, HARDWARE_MOVEMENT_DOWN);
+                            state = DOOR;
                         }
                     }
                 }
