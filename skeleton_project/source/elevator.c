@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include "hardware.h"
 #include "elevator.h"
-#include "orders.h"
 #include "timer.h"
-#include "fsm.h"
 
 int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
@@ -146,7 +144,7 @@ void run_elevator(){
                         if((elevator_queue[i] == 1 || elevator_queue[i] == 3) && i > current_floor && current_direction != HARDWARE_MOVEMENT_DOWN){
                             travel_to_destination(i, HARDWARE_MOVEMENT_UP);
                         } else if((elevator_queue[i] == 2 || elevator_queue[i] == 3) && i < current_floor && current_direction != HARDWARE_MOVEMENT_UP){
-                            travel_to_destination(i);
+                            travel_to_destination(i, HARDWARE_MOVEMENT_DOWN);
                         }
                     }
                 }
