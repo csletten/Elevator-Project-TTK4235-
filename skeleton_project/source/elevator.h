@@ -8,6 +8,12 @@ typedef enum {
     OBSTRUCT
 } CurrentState;
 
+typedef enum {
+    UP = 1,
+    DOWN,
+    BOTH_OR_INSIDE
+} OrderState;
+
 /**
  * @brief Gets the current floor. 
  *

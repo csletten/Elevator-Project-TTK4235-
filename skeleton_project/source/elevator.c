@@ -41,10 +41,10 @@ void order_buttons_up() {
     for (int i = 0; i < BUTTON_COUNT; ++i){
         if (hardware_read_order(i, HARDWARE_ORDER_UP)) {
             hardware_command_order_light(i, HARDWARE_ORDER_UP, 1);
-            if(elevator_queue[i] == 3 || elevator_queue[i] == 2){
-                elevator_queue[i] = 3;
+            if(elevator_queue[i] == BOTH_OR_INSIDE || elevator_queue[i] == DOWN){
+                elevator_queue[i] = BOTH_OR_INSIDE;
             } else{
-                elevator_queue[i] = 1;
+                elevator_queue[i] = UP;
             }
         }
     }
@@ -62,10 +62,10 @@ void order_buttons_down() {
     for (int i = 1; i < BUTTON_COUNT+1; ++i){
         if (hardware_read_order(i, HARDWARE_ORDER_DOWN)) {
             hardware_command_order_light(i, HARDWARE_ORDER_DOWN, 1);
-            if(elevator_queue[i] == 3 || elevator_queue[i] == 1){
-                elevator_queue[i] = 3;
+            if(elevator_queue[i] == BOTH_OR_INSIDE || elevator_queue[i] == UP){
+                elevator_queue[i] = BOTH_OR_INSIDE;
             } else{
-                elevator_queue[i] = 2;
+                elevator_queue[i] = DOWN;
             }
         }
     }
@@ -83,7 +83,7 @@ void order_buttons_inside(){
     for(int i = 0; i < BUTTON_COUNT + 1; ++i){
         if (hardware_read_order(i, HARDWARE_ORDER_INSIDE)) {
             hardware_command_order_light(i, HARDWARE_ORDER_INSIDE, 1);
-            elevator_queue[i] = 3;
+            elevator_queue[i] = BOTH_OR_INSIDE;
             //printf("Inside button on floor %d pressed ", i);
         }
     }
@@ -157,6 +157,7 @@ void run_elevator(){
     while(1){
         buttons();
         elevator_set_current_floor();
+        //printf("UP: %d ", UP);
         switch(state){
             case IDLE:
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
@@ -175,19 +176,17 @@ void run_elevator(){
             case RUNNING:
 
                 // ordre på samme etg
+                // stopper ikke helt nederst
+                // stopper i 2* 3sek hvis man trykker på samme etg
 
                 for(int i = 0; i < FLOOR_COUNT; ++i){
                     if(elevator_queue[i]){
                         if((elevator_queue[i] == 1 || elevator_queue[i] == 3) && i > current_floor && current_direction != HARDWARE_MOVEMENT_DOWN){
-                            hardware_command_movement(HARDWARE_MOVEMENT_UP);
-                            if(i == current_floor){
-                                state = DOOR;
-                            }
+                            travel_to_destination(i, HARDWARE_MOVEMENT_UP);
+                            state = DOOR;
                         } else if((elevator_queue[i] == 2 || elevator_queue[i] == 3) && i < current_floor && current_direction != HARDWARE_MOVEMENT_UP){
-                            hardware_command_movement(HARDWARE_MOVEMENT_DOWN);
-                            if(i == current_floor){
-                                state = DOOR;
-                            }
+                            travel_to_destination(i, HARDWARE_MOVEMENT_DOWN);
+                            state = DOOR;
                         }
                     }
                 }
@@ -240,7 +239,6 @@ void run_elevator(){
                 if (elevator_get_current_floor()){
                         timer_start_timer(3000);
                         while(!timer_check_expired()){
-                            buttons();
                         }
                         state = DOOR;
                     }else{
