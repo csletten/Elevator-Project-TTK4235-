@@ -120,7 +120,7 @@ void buttons(){
 }
 
 void clear_all_orders(){
-    for(int i = 0; i < 4; ++i){
+    for(int i = 0; i < FLOOR_COUNT; ++i){
         elevator_queue[i] = 0;
     }
 }
@@ -132,9 +132,13 @@ int get_destination(){
     for(int i = 0; i < FLOOR_COUNT; ++i){
         if(elevator_queue[i]){
             current_distance = abs(current_floor - i);
-            if(current_distance < min_distance && ((current_direction == HARDWARE_MOVEMENT_UP && i > current_floor && elevator_queue == UP || elevator_queue == BOTH_OR_INSIDE) || (current_direction == HARDWARE_MOVEMENT_DOWN && i < current_floor && elevator_queue == DOWN || elevator_queue == BOTH_OR_INSIDE)) || current_direction == HARDWARE_MOVEMENT_STOP)){
-                min_distance = current_distance;
-                current_destination = i;
+            if(current_distance < min_distance){
+                if((current_direction == HARDWARE_MOVEMENT_UP && i > current_floor && (elevator_queue[i] == UP || elevator_queue[i] == BOTH_OR_INSIDE)) ||
+                (current_direction == HARDWARE_MOVEMENT_DOWN && i < current_floor && (elevator_queue[i] == DOWN || elevator_queue[i] == BOTH_OR_INSIDE)) ||
+                current_direction == HARDWARE_MOVEMENT_STOP){
+                    min_distance = current_distance;
+                    current_destination = i;
+                }
             }
         }
     }
@@ -162,8 +166,6 @@ void travel_to_destination(int destination_floor, HardwareMovement direction){
     while(destination_floor != current_floor && destination_floor == get_destination()){
         buttons();
         elevator_set_current_floor();
-
-        // new order when already travelling
         hardware_command_movement(direction);
         if(hardware_read_stop_signal()){
             state = EMERGENCY_STOP;
@@ -202,9 +204,8 @@ void run_elevator(){
                 break;
                 
             case RUNNING:
-                int selected_destination = get_destination()
-                if(selected_destination != -1){
-                    travel_to_destination(selected_destination);
+                if(get_destination() != -1){
+                    travel_to_destination(get_destination(), current_direction);
                 }
                 break;
 
