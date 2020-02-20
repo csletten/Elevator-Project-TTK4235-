@@ -10,7 +10,7 @@ int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
 
 static int current_floor = 0;
-static int current_direction = 0;
+static int current_direction = HARDWARE_MOVEMENT_STOP;
 int elevator_queue[4];
 
 CurrentState state = IDLE;
@@ -107,13 +107,10 @@ void elevator_startup(){
 
 }
 
-void travel_to_destination(int destination_floor){
-    if(destination_floor > current_floor){   
-        hardware_command_movement(HARDWARE_MOVEMENT_UP);
-    } else if(destination_floor < current_floor){
-        hardware_command_movement(HARDWARE_MOVEMENT_DOWN);
-    }else{
-        hardware_command_movement(HARDWARE_MOVEMENT_STOP);
+void travel_to_destination(int destination_floor, HardwareMovement direction){
+    while(destination_floor != current_floor){
+        buttons();
+        hardware_command_movement(direction);
     }
 }
 
@@ -140,15 +137,17 @@ void run_elevator(){
                 break;
                 
             case RUNNING:
+
+                // ordre på samme etg
+
+
                 for(int i = 0; i < FLOOR_COUNT; ++i){
                     if(elevator_queue[i]){
-                        if(elevator_get_current_floor() == i+1){
-                            state = DOOR;
-                        } else{
-                            state = RUNNING;
-                        } 
-                    } else{
-                        state = IDLE;
+                        if((elevator_queue[i] == 1 || elevator_queue[i] == 3) && i > current_floor && current_direction != HARDWARE_MOVEMENT_DOWN){
+                            travel_to_destination(i, HARDWARE_MOVEMENT_UP);
+                        } else if((elevator_queue[i] == 2 || elevator_queue[i] == 3) && i < current_floor && current_direction != HARDWARE_MOVEMENT_UP){
+                            travel_to_destination(i);
+                        }
                     }
                 }
                 break;

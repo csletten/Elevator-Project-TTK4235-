@@ -30,7 +30,7 @@ void buttons();
 
 void elevator_startup();
 
-void travel_to_destination(int destination_floor);
+void travel_to_destination(int destination_floor, HardwareMovement direction);
 
 void run_elevator();
 
