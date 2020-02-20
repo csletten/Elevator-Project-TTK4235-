@@ -7,8 +7,11 @@
 int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
 
+// add ints for up, down and upanddown
+
 static int current_floor = 0;
 static int current_direction = HARDWARE_MOVEMENT_STOP;
+// add FLOOR_COUNT
 int elevator_queue[4];
 
 CurrentState state = IDLE;
@@ -106,6 +109,7 @@ void floor_lights(){
     hardware_command_floor_indicator_on(current_floor);
 }
 
+// endre til handle_buttons()
 void buttons(){
     order_buttons_up();
     clear_order_buttons_up();
@@ -134,10 +138,12 @@ void elevator_startup(){
 
 }
 
+
 void travel_to_destination(int destination_floor, HardwareMovement direction){
     while(destination_floor != current_floor){
         buttons();
         elevator_set_current_floor();
+        // new order when already travelling
         hardware_command_movement(direction);
     }
     hardware_command_movement(HARDWARE_MOVEMENT_STOP);
@@ -170,15 +176,18 @@ void run_elevator(){
 
                 // ordre på samme etg
 
-
                 for(int i = 0; i < FLOOR_COUNT; ++i){
                     if(elevator_queue[i]){
                         if((elevator_queue[i] == 1 || elevator_queue[i] == 3) && i > current_floor && current_direction != HARDWARE_MOVEMENT_DOWN){
-                            travel_to_destination(i, HARDWARE_MOVEMENT_UP);
-                            state = DOOR;
+                            hardware_command_movement(HARDWARE_MOVEMENT_UP);
+                            if(i == current_floor){
+                                state = DOOR;
+                            }
                         } else if((elevator_queue[i] == 2 || elevator_queue[i] == 3) && i < current_floor && current_direction != HARDWARE_MOVEMENT_UP){
-                            travel_to_destination(i, HARDWARE_MOVEMENT_DOWN);
-                            state = DOOR;
+                            hardware_command_movement(HARDWARE_MOVEMENT_DOWN);
+                            if(i == current_floor){
+                                state = DOOR;
+                            }
                         }
                     }
                 }
@@ -190,22 +199,25 @@ void run_elevator(){
                 elevator_queue[current_floor] = 0;
                 buttons();
                 while(!timer_check_expired()){
+                    buttons();
                 }
                 if(hardware_read_obstruction_signal()){
                     state = OBSTRUCT;
-                }
-                hardware_command_door_open(0);
-                for(int i = 0; i < FLOOR_COUNT; ++i){
-                    if(elevator_queue[i]){
-                        if(elevator_get_current_floor() == i+1){
-                            state = DOOR;
+                } else{
+                    hardware_command_door_open(0);
+                    for(int i = 0; i < FLOOR_COUNT; ++i){
+                        if(elevator_queue[i]){
+                            if(elevator_get_current_floor() == i+1){
+                                state = DOOR;
+                            } else{
+                                state = RUNNING;
+                            } 
                         } else{
-                            state = RUNNING;
-                        } 
-                    } else{
-                        state = IDLE;
+                            state = IDLE;
+                        }
                     }
                 }
+                
                 break;
 
             case EMERGENCY_STOP:
@@ -216,6 +228,7 @@ void run_elevator(){
                     }
                     timer_start_timer(3000);
                     while(!timer_check_expired()){
+                        buttons();
                     }
                     hardware_command_door_open(0);   
                 }
@@ -227,6 +240,7 @@ void run_elevator(){
                 if (elevator_get_current_floor()){
                         timer_start_timer(3000);
                         while(!timer_check_expired()){
+                            buttons();
                         }
                         state = DOOR;
                     }else{
