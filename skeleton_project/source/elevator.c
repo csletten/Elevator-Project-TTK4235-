@@ -142,6 +142,14 @@ int get_destination(){
             }
         }
     }
+    if(current_destination == -1){
+        current_direction = HARDWARE_MOVEMENT_STOP;
+    } else if(current_destination > current_floor){
+        current_direction = HARDWARE_MOVEMENT_UP;    
+    }else if(current_destination < current_floor){
+        current_direction = HARDWARE_MOVEMENT_DOWN;    
+    }
+
     return current_destination;
 }
 
@@ -162,11 +170,12 @@ void elevator_startup(){
 }
 
 
-void travel_to_destination(int destination_floor, HardwareMovement direction){
+void travel_to_destination(int destination_floor){
     while(destination_floor != current_floor && destination_floor == get_destination()){
         buttons();
         elevator_set_current_floor();
-        hardware_command_movement(direction);
+        hardware_command_movement(current_direction);
+        printf("Travelling to floor %d, with the direction %d \n", destination_floor, current_direction);
         if(hardware_read_stop_signal()){
             state = EMERGENCY_STOP;
             break;
@@ -176,9 +185,9 @@ void travel_to_destination(int destination_floor, HardwareMovement direction){
 }
 
 void run_elevator(){
-    printf("Current floor: %d ", current_floor);
     buttons();
     elevator_startup();
+    int destination = 0;
 
     while(1){
         buttons();
@@ -204,8 +213,15 @@ void run_elevator(){
                 break;
                 
             case RUNNING:
-                if(get_destination() != -1){
-                    travel_to_destination(get_destination(), current_direction);
+                printf("Destination is floor %d \n", get_destination());
+                destination = get_destination();
+                if(destination != -1){
+                    //printf("Travelling to floor %d, with the direction %d \n", destination, current_direction);
+                    travel_to_destination(destination);
+                    elevator_queue[destination] = 0;
+                    state = DOOR;
+                } else{
+                    state = IDLE;
                 }
                 break;
 

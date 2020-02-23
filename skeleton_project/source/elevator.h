@@ -48,7 +48,7 @@ int get_destination();
 
 void elevator_startup();
 
-void travel_to_destination(int destination_floor, HardwareMovement direction);
+void travel_to_destination(int destination_floor);
 
 void run_elevator();
 
