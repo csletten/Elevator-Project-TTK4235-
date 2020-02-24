@@ -4,4 +4,5 @@
 
 int main(){
     run_elevator();
+    return 0;
 }

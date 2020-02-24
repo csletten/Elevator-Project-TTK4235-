@@ -218,7 +218,6 @@ void run_elevator(){
                 if(destination != -1){
                     //printf("Travelling to floor %d, with the direction %d \n", destination, current_direction);
                     travel_to_destination(destination);
-                    elevator_queue[destination] = 0;
                     state = DOOR;
                 } else{
                     state = IDLE;
@@ -254,8 +253,6 @@ void run_elevator(){
             case EMERGENCY_STOP:
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
                 if(elevator_get_current_floor()){
-                    printf("Testing ft. Rocky");
-                    printf("Current floor: %d ", elevator_get_current_floor());
                     while(hardware_read_stop_signal()){
                         hardware_command_door_open(1);
                     }
