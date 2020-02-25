@@ -40,7 +40,7 @@ void stop_button();
 
 void floor_lights();
 
-void buttons();
+void handle_buttons();
 
 void clear_all_orders();
 

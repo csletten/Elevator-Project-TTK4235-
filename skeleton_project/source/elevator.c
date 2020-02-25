@@ -141,8 +141,8 @@ void floor_lights()
     hardware_command_floor_indicator_on(current_floor);
 }
 
-// endre til handle_buttons()
-void buttons()
+// endre til  handle_buttons()
+void handle_buttons()
 {
     order_buttons_up();
     clear_order_buttons_up();
@@ -222,7 +222,7 @@ void travel_to_destination(int destination_floor)
 {
     while (destination_floor != current_floor)
     {
-        buttons();
+        handle_buttons();
         elevator_set_current_floor();
         hardware_command_movement(current_direction);
         //printf("Travelling to floor %d, with the direction %d \n", destination_floor, current_direction);
@@ -242,13 +242,13 @@ void travel_to_destination(int destination_floor)
 
 void run_elevator()
 {
-    buttons();
+    handle_buttons();
     elevator_startup();
     int destination = 0;
 
     while (1)
     {
-        buttons();
+        handle_buttons();
         elevator_set_current_floor();
         printf("Current state: %d \n", state);
         //printf("UP: %d ", UP);
@@ -260,6 +260,7 @@ void run_elevator()
             current_direction = HARDWARE_MOVEMENT_STOP;
             for (int i = 0; i < FLOOR_COUNT; ++i)
             {
+                handle_buttons();
                 if (elevator_queue[i])
                 {
                     if (elevator_get_current_floor() == i + 1)
@@ -292,11 +293,11 @@ void run_elevator()
         case DOOR:
             hardware_command_door_open(1);
             elevator_queue[current_floor] = 0;
-            buttons();
+            handle_buttons();
             timer_start_timer(3000);
             while (!timer_check_expired())
             {
-                buttons();
+                handle_buttons();
             }
             if (hardware_read_obstruction_signal())
             {
@@ -351,7 +352,7 @@ void run_elevator()
                 timer_start_timer(3000);
                 while (!timer_check_expired())
                 {
-                    buttons();
+                    handle_buttons();
                 }
                 state = DOOR;
             }
