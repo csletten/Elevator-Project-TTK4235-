@@ -220,17 +220,12 @@ void elevator_startup()
 
 void travel_to_destination(int destination_floor)
 {
-    while (destination_floor != current_floor)
+    while (get_destination() != current_floor)
     {
         handle_buttons();
         elevator_set_current_floor();
         hardware_command_movement(current_direction);
         //printf("Travelling to floor %d, with the direction %d \n", destination_floor, current_direction);
-        if (destination_floor != get_destination())
-        {
-            printf("new destination is %d \n", get_destination());
-            //travel_to_destination(get_destination());
-        }
         if (hardware_read_stop_signal())
         {
             state = EMERGENCY_STOP;
@@ -295,6 +290,16 @@ void run_elevator()
             elevator_queue[current_floor] = 0;
             handle_buttons();
             timer_start_timer(3000);
+
+            int counter = 0;
+            for (int i = 0; i < FLOOR_COUNT; ++i){
+                if(!elevator_queue[i]){
+                    counter++;
+                }
+            }
+            if (counter == FLOOR_COUNT){
+                current_direction = HARDWARE_MOVEMENT_STOP;
+            }
             while (!timer_check_expired())
             {
                 handle_buttons();
@@ -316,6 +321,7 @@ void run_elevator()
                         }
                         else
                         {
+                            get_destination();
                             state = RUNNING;
                         }
                     }
