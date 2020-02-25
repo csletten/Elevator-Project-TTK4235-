@@ -14,6 +14,8 @@ int elevator_queue[4];
 
 CurrentState state = IDLE;
 
+//CurrentDestination dest = FIRST;
+
 int elevator_get_current_floor()
 {
     for (int i = 0; i < FLOOR_COUNT; i++)
@@ -172,18 +174,33 @@ int get_destination()
         if (elevator_queue[i])
         {
             current_distance = abs(current_floor - i);
-            if (current_distance < min_distance)
+            if (current_distance <= min_distance)
             {
                 if ((current_direction == HARDWARE_MOVEMENT_UP && i > current_floor && (elevator_queue[i] == UP || elevator_queue[i] == BOTH_OR_INSIDE)) ||
                     (current_direction == HARDWARE_MOVEMENT_DOWN && i < current_floor && (elevator_queue[i] == DOWN || elevator_queue[i] == BOTH_OR_INSIDE)) ||
                     current_direction == HARDWARE_MOVEMENT_STOP)
                 {
                     min_distance = current_distance;
+                    /*
+                    if (i == 0){
+                        dest = FIRST;
+                    }
+                    else if (i == 1){
+                        dest = SECOND;
+                    }
+                    else if (i == 2){
+                        dest = THIRD;
+                    }
+                    else if (i == 3){
+                        dest = FOURTH;
+                    }
+                    */
                     current_destination = i;
                 }
             }
         }
     }
+    printf("Destination in get_dest() %d \n", current_destination);
     if (current_destination == -1)
     {
         current_direction = HARDWARE_MOVEMENT_STOP;
@@ -268,11 +285,13 @@ void run_elevator()
                     }
                 }
             }
+            printf("Direction in IDLE: %d \n", current_direction);
             break;
 
         case RUNNING:
             printf("Destination is floor %d \n", get_destination());
             destination = get_destination();
+            printf("Direction in RUNNING: %d \n", current_direction);
             if (destination != -1)
             {
                 //printf("Travelling to floor %d, with the direction %d \n", destination, current_direction);
