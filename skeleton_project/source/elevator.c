@@ -278,6 +278,7 @@ void run_elevator()
             break;
 
         case RUNNING:
+        /*
             printf("Destination is floor %d \n", get_destination());
             destination = get_destination();
             printf("Direction in RUNNING: %d \n", current_direction);
@@ -290,6 +291,38 @@ void run_elevator()
             else
             {
                 state = IDLE;
+            }
+            */
+            for (int i = 0; i < 4; ++i){
+                if (elevator_queue[i]== 1 || elevator_queue[i]== 3){
+                    while(current_floor != i){
+                    handle_buttons();
+                    set_current_floor();
+                    if (i < current_floor){
+                        hardware_movement(HARDWARE_MOVEMENT_DOWN);
+                    } else if (i > current_floor){
+                        hardware_movement(HARDWARE_MOVEMENT_UP);
+                    }
+                    
+                    }
+                    state = DOOR;
+                    hardware_movement(HARDWARE_MOVEMENT_STOP);
+                    }
+                }
+
+                for (int i = 3; i > -1; --i){
+                if (elevator_queue[i]== 2 || elevator_queue[i]== 3){
+                    while(current_floor != i){
+                    hardware_movement(HARDWARE_MOVEMENT_DOWN);
+                    if (i < current_floor){
+                        hardware_movement(HARDWARE_MOVEMENT_DOWN);
+                    } else if (i > current_floor){
+                        hardware_movement(HARDWARE_MOVEMENT_UP);
+                        }
+                    }
+                    state = DOOR;
+                    hardware_movement(HARDWARE_MOVEMENT_STOP);
+                }
             }
             break;
 
