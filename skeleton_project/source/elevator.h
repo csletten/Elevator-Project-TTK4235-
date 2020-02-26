@@ -46,6 +46,8 @@ void clear_all_orders();
 
 int get_destination();
 
+void set_direction(int destination);
+
 void elevator_startup();
 
 void travel_to_destination(int destination_floor);

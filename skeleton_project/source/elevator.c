@@ -143,7 +143,6 @@ void floor_lights()
     hardware_command_floor_indicator_on(current_floor);
 }
 
-// endre til  handle_buttons()
 void handle_buttons()
 {
     order_buttons_up();
@@ -181,40 +180,31 @@ int get_destination()
                     current_direction == HARDWARE_MOVEMENT_STOP)
                 {
                     min_distance = current_distance;
-                    /*
-                    if (i == 0){
-                        dest = FIRST;
-                    }
-                    else if (i == 1){
-                        dest = SECOND;
-                    }
-                    else if (i == 2){
-                        dest = THIRD;
-                    }
-                    else if (i == 3){
-                        dest = FOURTH;
-                    }
-                    */
                     current_destination = i;
                 }
             }
         }
     }
     printf("Destination in get_dest() %d \n", current_destination);
-    if (current_destination == -1)
+    set_direction(current_destination);
+    return current_destination;
+}
+
+void set_direction(int destination){
+    if (destination == -1)
     {
         current_direction = HARDWARE_MOVEMENT_STOP;
     }
-    else if (current_destination > current_floor)
+    else if (destination > current_floor)
     {
         current_direction = HARDWARE_MOVEMENT_UP;
     }
-    else if (current_destination < current_floor)
+    else if (destination < current_floor)
     {
         current_direction = HARDWARE_MOVEMENT_DOWN;
+    } else if (destination == current_floor){
+        current_direction = HARDWARE_MOVEMENT_STOP;
     }
-
-    return current_destination;
 }
 
 void elevator_startup()
@@ -272,7 +262,6 @@ void run_elevator()
             current_direction = HARDWARE_MOVEMENT_STOP;
             for (int i = 0; i < FLOOR_COUNT; ++i)
             {
-                handle_buttons();
                 if (elevator_queue[i])
                 {
                     if (elevator_get_current_floor() == i + 1)
@@ -351,7 +340,6 @@ void run_elevator()
                 }
             }
             break;
-
         case EMERGENCY_STOP:
             hardware_command_movement(HARDWARE_MOVEMENT_STOP);
             if (elevator_get_current_floor())
