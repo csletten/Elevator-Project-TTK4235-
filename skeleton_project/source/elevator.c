@@ -132,9 +132,9 @@ void stop_button()
 {
     if (hardware_read_stop_signal())
     {
-        hardware_command_stop_light(1);
         state = EMERGENCY_STOP;
     }
+    hardware_command_stop_light(hardware_read_stop_signal());
 }
 
 void floor_lights()
@@ -163,54 +163,11 @@ void clear_all_orders()
     }
 }
 
-int get_destination()
-{
-    int min_distance = FLOOR_COUNT;
-    int current_distance = 0;
-    int current_destination = -1;
-    for (int i = 0; i < FLOOR_COUNT; ++i)
-    {
-        if (elevator_queue[i])
-        {
-            current_distance = abs(current_floor - i);
-            if (current_distance <= min_distance)
-            {
-                if ((current_direction == HARDWARE_MOVEMENT_UP && i > current_floor && (elevator_queue[i] == UP || elevator_queue[i] == BOTH_OR_INSIDE)) ||
-                    (current_direction == HARDWARE_MOVEMENT_DOWN && i < current_floor && (elevator_queue[i] == DOWN || elevator_queue[i] == BOTH_OR_INSIDE)) ||
-                    current_direction == HARDWARE_MOVEMENT_STOP)
-                {
-                    min_distance = current_distance;
-                    current_destination = i;
-                }
-            }
-        }
-    }
-    printf("Destination in get_dest() %d \n", current_destination);
-    set_direction(current_destination);
-    return current_destination;
-}
 
-void set_direction(int destination){
-    if (destination == -1)
-    {
-        current_direction = HARDWARE_MOVEMENT_STOP;
-    }
-    else if (destination > current_floor)
-    {
-        current_direction = HARDWARE_MOVEMENT_UP;
-    }
-    else if (destination < current_floor)
-    {
-        current_direction = HARDWARE_MOVEMENT_DOWN;
-    } else if (destination == current_floor){
-        current_direction = HARDWARE_MOVEMENT_STOP;
-    }
-}
-
-int check_queue_above(){
+int check_queue_above(int starting_point){
     for(int i = 0; i < FLOOR_COUNT; ++i){
         if(elevator_queue[i] > 0){
-            if(i > current_floor){
+            if(i > starting_point){
                 return 1;
             }
         }
@@ -218,10 +175,10 @@ int check_queue_above(){
     return 0;
 }
 
-int check_queue_below(){
+int check_queue_below(int starting_point){
     for(int i = 0; i < FLOOR_COUNT; ++i){
         if(elevator_queue[i] > 0){
-            if(i < current_floor){
+            if(i < starting_point){
                 return 1;
             }
         }
@@ -242,13 +199,20 @@ int get_order_count(){
 void update_current_direction(){
     if(!get_order_count()){
         current_direction = HARDWARE_MOVEMENT_STOP;
-    } else if(check_queue_above() && !check_queue_below()){
+    } else if(check_queue_above(current_floor) && !check_queue_below(current_floor)){
         current_direction = HARDWARE_MOVEMENT_UP;
-    } else if(check_queue_below() && !check_queue_above()){
+    } else if(check_queue_below(current_floor) && !check_queue_above(current_floor)){
         current_direction = HARDWARE_MOVEMENT_DOWN;
+    } else if(current_direction == HARDWARE_MOVEMENT_STOP && !elevator_get_current_floor()){
+        if (check_queue_below(current_floor+1) && !check_queue_above(current_floor)){
+            current_direction = HARDWARE_MOVEMENT_DOWN;
+        } 
+        else if (check_queue_above(current_floor-1) && !check_queue_below(current_floor)){
+            current_direction = HARDWARE_MOVEMENT_UP;
+        }
     }
 }
-
+/*
 void running_from_floor(){
     if(elevator_get_current_floor()){
         if(check_queue_above()){
@@ -283,6 +247,8 @@ void running_between_floors(){
         }
     }
 }
+*/
+
 
 int check_up_at_floor(){
     for(int i = 1; i < FLOOR_COUNT+1; ++i){
@@ -317,13 +283,13 @@ int check_arrival(){
     } else if(current_direction == HARDWARE_MOVEMENT_UP){
         if(check_up_at_floor()){
             return 1;
-        } else if(check_down_at_floor() && !check_queue_above()){
+        } else if(check_down_at_floor() && !check_queue_above(current_floor)){
             return 1;
         }
     } else if(current_direction == HARDWARE_MOVEMENT_DOWN){
         if(check_down_at_floor()){
             return 1;
-        } else if(check_up_at_floor() && !check_queue_below()){
+        } else if(check_up_at_floor() && !check_queue_below(current_floor)){
             return 1;
         }
     }
@@ -352,7 +318,7 @@ void run_elevator()
 {
     handle_buttons();
     elevator_startup();
-    //int destination = 0;
+    int stopped_while_open;
 
     while (1)
     {
@@ -360,12 +326,14 @@ void run_elevator()
         elevator_set_current_floor();
         //printf("Current state: %d \n", state);
         //printf("UP: %d ", UP);
+        printf("Floor Count: %d \n", get_order_count());
         switch (state)
         {
         case IDLE:
             //printf("Current floor %d ", current_floor);
-            //printf("ORDER ABOVE %d ", check_queue_above());
+            //printf("ORDER BELOW %d ", check_queue_below());
             update_current_direction();
+            printf("current dir %d ", current_direction);
             if((check_up_at_floor() || check_down_at_floor() || check_both_or_inside_at_floor()) && elevator_get_current_floor()){
                 state = DOOR;
             } else if(current_direction != HARDWARE_MOVEMENT_STOP){
@@ -394,7 +362,6 @@ void run_elevator()
             elevator_queue[current_floor] = 0;
             handle_buttons();
             timer_start_timer(3000);
-            
 
             while (!timer_check_expired())
             {
@@ -418,6 +385,8 @@ void run_elevator()
             break;
         case EMERGENCY_STOP:
             hardware_command_movement(HARDWARE_MOVEMENT_STOP);
+            clear_all_orders();
+            stopped_while_open = 0;
             if (elevator_get_current_floor())
             {
                 while (hardware_read_stop_signal())
@@ -425,14 +394,25 @@ void run_elevator()
                     hardware_command_door_open(1);
                 }
                 timer_start_timer(3000);
+                
                 while (!timer_check_expired())
                 {
+                    hardware_command_stop_light(hardware_read_stop_signal());
+                    if(hardware_read_stop_signal()){
+                        stopped_while_open = 1;
+                        break;
+                    }
+                       
                 }
-                hardware_command_door_open(0);
+                if(!stopped_while_open){
+                    hardware_command_door_open(0);
+                }
+                
             }
-            clear_all_orders();
-            hardware_command_stop_light(0);
-            state = IDLE;
+            if(!stopped_while_open){
+                hardware_command_stop_light(0);
+                state = IDLE;
+            }
             break;
 
         case OBSTRUCT:
