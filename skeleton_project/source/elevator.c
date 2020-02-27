@@ -14,8 +14,6 @@ int elevator_queue[4];
 
 CurrentState state = IDLE;
 
-//CurrentDestination dest = FIRST;
-
 int elevator_get_current_floor()
 {
     for (int i = 0; i < FLOOR_COUNT; i++)
