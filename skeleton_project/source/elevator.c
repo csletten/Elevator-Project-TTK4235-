@@ -10,6 +10,7 @@ int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
 
 static int current_floor = 0;
+//int last_direction;
 
 CurrentState state = IDLE;
 
@@ -91,9 +92,9 @@ void run_elevator()
         case IDLE:
             //printf("Current floor %d ", current_floor);
             //printf("ORDER BELOW %d ", check_orders_below());
-             printf("Current direction PRE %d \n", get_current_direction());
+            //printf("Current direction PRE %d \n", get_current_direction());
             update_current_direction();
-            printf("Current direction POST %d \n", get_current_direction());
+            //printf("Current direction POST %d \n", get_current_direction());
             //printf("current dir %d ", get_current_direction());
             if((check_up_at_floor() || check_down_at_floor() || check_both_or_inside_at_floor()) && elevator_get_current_floor()){
                 //print_all_orders();
@@ -158,6 +159,7 @@ void run_elevator()
             break;
 
         case EMERGENCY_STOP:
+            //last_direction = get_current_direction();
             set_current_direction(HARDWARE_MOVEMENT_STOP);
             hardware_command_movement(get_current_direction());
             clear_all_orders();

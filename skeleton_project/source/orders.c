@@ -6,6 +6,8 @@
 
 static int current_direction = HARDWARE_MOVEMENT_STOP;
 
+//extern int last_direction;
+//change to elevator_order_array
 int elevator_queue[4];
 
 int get_current_direction(){
