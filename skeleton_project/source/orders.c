@@ -6,7 +6,7 @@
 
 static int current_direction = HARDWARE_MOVEMENT_STOP;
 
-//extern int last_direction;
+extern int last_direction;
 //change to elevator_order_array
 int elevator_queue[4];
 
@@ -108,12 +108,29 @@ void update_current_direction(){
     } else if(check_orders_below(get_current_floor()) && !check_orders_above(get_current_floor())){
         current_direction = HARDWARE_MOVEMENT_DOWN;
     } else if(current_direction == HARDWARE_MOVEMENT_STOP && !elevator_get_current_floor()){
+        if (last_direction == HARDWARE_MOVEMENT_DOWN){
+            if (check_orders_below(get_current_floor())){
+                current_direction = HARDWARE_MOVEMENT_DOWN;
+            }
+            else if (check_orders_above(get_current_floor()-1)){
+                current_direction = HARDWARE_MOVEMENT_UP;
+            }
+        } else if (last_direction == HARDWARE_MOVEMENT_UP){
+            if (check_orders_below(get_current_floor()+1)){
+                current_direction = HARDWARE_MOVEMENT_DOWN;
+            } else if (check_orders_above(get_current_floor())){
+                current_direction = HARDWARE_MOVEMENT_UP;
+            }
+        }
+        
+        /*
         if (check_orders_below(get_current_floor()+1) && !check_orders_above(get_current_floor())){ 
             current_direction = HARDWARE_MOVEMENT_DOWN;
         }
         else if (check_orders_above(get_current_floor()-1) && !check_orders_below(get_current_floor())){
             current_direction = HARDWARE_MOVEMENT_UP;
         }
+        */
     }
 }
 

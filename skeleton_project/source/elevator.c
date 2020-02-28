@@ -10,7 +10,7 @@ int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
 
 static int current_floor = 0;
-//int last_direction;
+int last_direction;
 
 CurrentState state = IDLE;
 
@@ -36,51 +36,42 @@ int get_BUTTON_COUNT(){
 
 int elevator_get_current_floor()
 {
-    for (int i = 0; i < FLOOR_COUNT; i++)
-    {
-        if (hardware_read_floor_sensor(i))
-        {
+    for (int i = 0; i < FLOOR_COUNT; i++){
+        if (hardware_read_floor_sensor(i)){
             return i + 1;
         }
     }
     return 0;
 }
 
-void elevator_set_current_floor()
-{
-    if (elevator_get_current_floor())
-    {
+void elevator_set_current_floor(){
+    if (elevator_get_current_floor()){
         current_floor = elevator_get_current_floor() - 1;
     }
 }
 
-void elevator_startup()
-{
+void elevator_startup(){
     // Initalize hardware
     int error = hardware_init();
-    if (error != 0)
-    {
+    if (error != 0){
         fprintf(stderr, "Unable to initialize hardware\n");
         exit(1);
     }
 
-    // Move to first floor
-    while (elevator_get_current_floor() == 0)
-    {
+    // Move to first floor under or equal to current floor
+    while (elevator_get_current_floor() == 0){
         hardware_command_movement(HARDWARE_MOVEMENT_DOWN);
     }
     hardware_command_movement(HARDWARE_MOVEMENT_STOP);
 }
 
-void run_elevator()
-{
+void run_elevator(){
     handle_lights();
     handle_orders();
     elevator_startup();
     int stopped_while_open;
 
-    while (1)
-    {
+    while (1){
         handle_lights();
         handle_orders();
         elevator_set_current_floor();
@@ -141,11 +132,9 @@ void run_elevator()
                 handle_lights();
                 handle_orders();
             }
-            if (hardware_read_obstruction_signal())
-            {
+            if (hardware_read_obstruction_signal()){
                 state = OBSTRUCT;
-            }else
-            {
+            } else{
                 hardware_command_door_open(0);
                 update_current_direction();
                 if(get_current_direction() == HARDWARE_MOVEMENT_STOP){
@@ -159,27 +148,23 @@ void run_elevator()
             break;
 
         case EMERGENCY_STOP:
-            //last_direction = get_current_direction();
+            last_direction = get_current_direction();
             set_current_direction(HARDWARE_MOVEMENT_STOP);
             hardware_command_movement(get_current_direction());
             clear_all_orders();
             stopped_while_open = 0;
-            if (elevator_get_current_floor())
-            {
-                while (hardware_read_stop_signal())
-                {
+            if (elevator_get_current_floor()){
+                while (hardware_read_stop_signal()){
                     hardware_command_door_open(1);
                 }
                 timer_start_timer(3000);
                 
-                while (!timer_check_expired())
-                {
+                while (!timer_check_expired()){
                     hardware_command_stop_light(hardware_read_stop_signal());
                     if(hardware_read_stop_signal()){
                         stopped_while_open = 1;
                         break;
-                    }
-                       
+                    }    
                 }
                 if(!stopped_while_open){
                     hardware_command_door_open(0);
@@ -193,18 +178,14 @@ void run_elevator()
             break;
 
         case OBSTRUCT:
-            if (elevator_get_current_floor())
-            {
+            if (elevator_get_current_floor()){
                 timer_start_timer(3000);
-                while (!timer_check_expired())
-                {
+                while (!timer_check_expired()){
                     handle_lights();
                     handle_orders();
                 }
                 state = DOOR;
-            }
-            else
-            {
+            } else{
                 state = IDLE;
             }
             break;
