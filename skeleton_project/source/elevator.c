@@ -92,6 +92,7 @@ void run_elevator(){
                 //printf("returning to door \n");
                 state = DOOR;
             } else if(get_current_direction() != HARDWARE_MOVEMENT_STOP){
+                //printf("Current direction: %d", get_current_direction());
                 hardware_command_movement(get_current_direction());
                 //printf("RUNNING");
                 state = RUNNING;
@@ -99,12 +100,16 @@ void run_elevator(){
             break;
 
         case RUNNING:
+            //hardware_command_movement(get_current_direction());
             handle_lights();
             handle_orders();
             elevator_set_current_floor();
             if(hardware_read_stop_signal()){
+                last_direction = get_current_direction();
+                //printf("IN RUNNING, Last dir: %d \n", last_direction);
                 state = EMERGENCY_STOP;
             }
+            // her skriver den neste funksjonen over dersom vi har kommet frem. det må sjekkes
             //printf("ORDER ABOVE %d \n", check_orders_above());
             //printf("CURRENT DIRECTION %d \n", current_direction);
             if(check_arrival()){
@@ -148,7 +153,7 @@ void run_elevator(){
             break;
 
         case EMERGENCY_STOP:
-            last_direction = get_current_direction();
+            //last_direction = get_current_direction();
             set_current_direction(HARDWARE_MOVEMENT_STOP);
             hardware_command_movement(get_current_direction());
             clear_all_orders();
