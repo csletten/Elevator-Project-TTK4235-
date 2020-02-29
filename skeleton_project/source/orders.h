@@ -20,7 +20,7 @@ void set_current_direction(int direction);
  * 
  * @return Return the value of elevator_order_array with selected index.
  */
-int get_queue(int floor);
+int get_order_at_floor(int floor);
 
 
 /**
@@ -29,7 +29,7 @@ int get_queue(int floor);
  * @param floor
  * @param order
  */
-void set_queue(int floor, int order);
+void set_order_at_floor(int floor, int order);
 
 
 /**

@@ -18,11 +18,11 @@ void set_current_direction(int direction){
     current_direction = direction;
 }
 
-int get_queue(int floor){
+int get_order_at_floor(int floor){
     return elevator_order_array[floor];
 }
 
-void set_queue(int floor, int order){
+void set_order_at_floor(int floor, int order){
     elevator_order_array[floor] = order;
 }
 

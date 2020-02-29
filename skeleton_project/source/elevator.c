@@ -34,8 +34,7 @@ int get_BUTTON_COUNT(){
     return BUTTON_COUNT;
 }
 
-int check_floor_number()
-{
+int check_floor_number(){
     for (int i = 0; i < FLOOR_COUNT; i++){
         if (hardware_read_floor_sensor(i)){
             return i + 1;
@@ -110,7 +109,7 @@ void run_elevator(){
             timer_start_timer(3000);
 
             while (!timer_check_expired()){
-                set_queue(current_floor, 0);
+                set_order_at_floor(current_floor, 0);
                 handle_lights();
                 handle_orders();
                 if(hardware_read_stop_signal()){

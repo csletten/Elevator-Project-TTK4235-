@@ -15,7 +15,7 @@ void set_order_lights_up(){
 
 void clear_order_lights_up(){
     for (int i = 0; i < get_BUTTON_COUNT(); ++i){
-        if (get_queue(i) == 0 || get_queue(i) == 2){
+        if (get_order_at_floor(i) == 0 || get_order_at_floor(i) == 2){
             hardware_command_order_light(i, HARDWARE_ORDER_UP, 0);
         }
     }
@@ -31,7 +31,7 @@ void set_order_lights_down(){
 
 void clear_order_lights_down(){
     for (int i = 1; i < get_BUTTON_COUNT() + 1; ++i){
-        if (get_queue(i) == 0 || get_queue(i) == 1){
+        if (get_order_at_floor(i) == 0 || get_order_at_floor(i) == 1){
             hardware_command_order_light(i, HARDWARE_ORDER_DOWN, 0);
         }
     }
@@ -47,7 +47,7 @@ void set_order_lights_inside(){
 
 void clear_order_lights_inside(){
     for (int i = 0; i < get_BUTTON_COUNT() + 1; ++i){
-        if (get_queue(i) != 3){
+        if (get_order_at_floor(i) != 3){
             hardware_command_order_light(i, HARDWARE_ORDER_INSIDE, 0);
         }
     }
