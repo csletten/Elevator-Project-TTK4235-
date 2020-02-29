@@ -1,4 +1,9 @@
 /**
+ * @file
+ * @brief All functions handling the lights.
+ */
+
+/**
  * @brief Enables the lights for the order up buttons if order up buttons are pressed.
  */
 void set_order_lights_up();

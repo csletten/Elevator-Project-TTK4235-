@@ -1,3 +1,10 @@
+/**
+ * @file
+ * @brief Time functions.
+ * 
+ * Functions used to keep doors open for 3 seconds etc. 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
