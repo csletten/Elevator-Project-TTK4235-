@@ -4,14 +4,14 @@ typedef enum {
     IDLE,
     RUNNING,
     EMERGENCY_STOP,
-    DOOR,
-    OBSTRUCT
+    FLOOR,
+    OBSTRUCTED
 } CurrentState;
 
 typedef enum {
     UP = 1,
     DOWN,
-    BOTH_OR_INSIDE
+    BOTH_OR_CAB
 } OrderState;
 
 int get_state();
@@ -30,7 +30,7 @@ int get_BUTTON_COUNT();
  *
  * @return Return current floor. If no current floor return 0.
  */
-int elevator_get_current_floor();
+int check_floor_number();
 
 /**
  * @brief Polls the hardware for the status of orders from
@@ -42,7 +42,7 @@ int elevator_get_current_floor();
  * @return 1 if the combination of @p floor and @p order_type
  * is being requested, otherwise 0.
  */
-void elevator_set_current_floor();
+void update_current_floor();
 
 /**
  * @brief Polls the hardware for the status of orders from

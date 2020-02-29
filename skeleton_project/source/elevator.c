@@ -34,7 +34,7 @@ int get_BUTTON_COUNT(){
     return BUTTON_COUNT;
 }
 
-int elevator_get_current_floor()
+int check_floor_number()
 {
     for (int i = 0; i < FLOOR_COUNT; i++){
         if (hardware_read_floor_sensor(i)){
@@ -44,9 +44,9 @@ int elevator_get_current_floor()
     return 0;
 }
 
-void elevator_set_current_floor(){
-    if (elevator_get_current_floor()){
-        current_floor = elevator_get_current_floor() - 1;
+void update_current_floor(){
+    if (check_floor_number()){
+        current_floor = check_floor_number() - 1;
     }
 }
 
@@ -59,7 +59,7 @@ void elevator_startup(){
     }
 
     // Move to first floor under or equal to current floor
-    while (elevator_get_current_floor() == 0){
+    while (check_floor_number() == 0){
         hardware_command_movement(HARDWARE_MOVEMENT_DOWN);
     }
     hardware_command_movement(HARDWARE_MOVEMENT_STOP);
@@ -74,23 +74,20 @@ void run_elevator(){
     while (1){
         handle_lights();
         handle_orders();
-        elevator_set_current_floor();
+        update_current_floor();
         //printf("Current state: %d \n", state);
         //printf("UP: %d ", UP);
         //printf("Floor Count: %d \n", get_order_count());
         switch (state)
         {
         case IDLE:
-            //printf("Current floor %d ", current_floor);
-            //printf("ORDER BELOW %d ", check_orders_below());
-            //printf("Current direction PRE %d \n", get_current_direction());
+            //printf("IDLE STATE \n");
             update_current_direction();
-            //printf("Current direction POST %d \n", get_current_direction());
-            //printf("current dir %d ", get_current_direction());
-            if((check_up_at_floor() || check_down_at_floor() || check_both_or_inside_at_floor()) && elevator_get_current_floor()){
+            printf("bool_order_at_floor: %d \n", bool_order_at_floor(current_floor));
+            if(bool_order_at_floor(current_floor) && check_floor_number()){
                 //print_all_orders();
-                //printf("returning to door \n");
-                state = DOOR;
+                //printf("returning to FLOOR \n");
+                state = FLOOR;
             } else if(get_current_direction() != HARDWARE_MOVEMENT_STOP){
                 //printf("Current direction: %d", get_current_direction());
                 hardware_command_movement(get_current_direction());
@@ -100,45 +97,43 @@ void run_elevator(){
             break;
 
         case RUNNING:
+            //printf("RUNNING STATE \n");
             //hardware_command_movement(get_current_direction());
             handle_lights();
             handle_orders();
-            elevator_set_current_floor();
+            update_current_floor();
             if(hardware_read_stop_signal()){
                 last_direction = get_current_direction();
                 //printf("IN RUNNING, Last dir: %d \n", last_direction);
                 state = EMERGENCY_STOP;
-            }
-            // her skriver den neste funksjonen over dersom vi har kommet frem. det må sjekkes
-            //printf("ORDER ABOVE %d \n", check_orders_above());
-            //printf("CURRENT DIRECTION %d \n", current_direction);
-            if(check_arrival()){
+            } else if(check_arrival()){
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
-                state = DOOR;
+                state = FLOOR;
             }
             break;
 
-        case DOOR:
+        case FLOOR:
+            //printf("FLOOR STATE \n");
             hardware_command_door_open(1);
             //printf("Current floor %d \n ", current_floor+1);
             set_queue(current_floor, 0);
             //printf("PRE handling \n");
+            //printf("ORDER Cou");
             //print_all_orders();
-            handle_lights();
-            handle_orders();
             //printf("POST handling \n");
             //print_all_orders();
             timer_start_timer(3000);
             //printf("DOOR \n");
             //printf("Up press %d \n", check_up_at_floor());
             //printf("DOWN press %d \n", check_down_at_floor());
-            //printf("INSIDE press %d \n", check_both_or_inside_at_floor());
+            //printf("INSIDE press %d \n", check_both_or_cab_at_floor());
             while (!timer_check_expired()){
+                set_queue(current_floor, 0);
                 handle_lights();
                 handle_orders();
             }
             if (hardware_read_obstruction_signal()){
-                state = OBSTRUCT;
+                state = OBSTRUCTED;
             } else{
                 hardware_command_door_open(0);
                 update_current_direction();
@@ -153,12 +148,13 @@ void run_elevator(){
             break;
 
         case EMERGENCY_STOP:
+            //printf("EM.STOP STATE \n");
             //last_direction = get_current_direction();
             set_current_direction(HARDWARE_MOVEMENT_STOP);
             hardware_command_movement(get_current_direction());
             clear_all_orders();
             stopped_while_open = 0;
-            if (elevator_get_current_floor()){
+            if (check_floor_number()){
                 while (hardware_read_stop_signal()){
                     hardware_command_door_open(1);
                 }
@@ -182,14 +178,14 @@ void run_elevator(){
             }
             break;
 
-        case OBSTRUCT:
-            if (elevator_get_current_floor()){
+        case OBSTRUCTED:
+            if (check_floor_number()){
                 timer_start_timer(3000);
                 while (!timer_check_expired()){
                     handle_lights();
                     handle_orders();
                 }
-                state = DOOR;
+                state = FLOOR;
             } else{
                 state = IDLE;
             }

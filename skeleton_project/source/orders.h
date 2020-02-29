@@ -26,10 +26,12 @@ int check_up_at_floor();
 
 int check_down_at_floor();
 
-int check_both_or_inside_at_floor();
+int check_both_or_cab_at_floor();
 
 int check_arrival();
 
 void clear_all_orders();
 
 void print_all_orders();
+
+int bool_order_at_floor(int floor);
