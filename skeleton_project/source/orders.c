@@ -6,8 +6,8 @@
 
 static int current_direction = HARDWARE_MOVEMENT_STOP;
 
-extern int last_direction;
-//change to elevator_order_array
+extern int direction_from_last_floor;
+
 int elevator_order_array[4];
 
 int get_current_direction(){
@@ -56,7 +56,6 @@ void set_order_down(){
 void set_order_inside(){
     for (int i = 0; i < get_BUTTON_COUNT() + 1; ++i){
         if (hardware_read_order(i, HARDWARE_ORDER_INSIDE)){
-            printf("Inside order read \n");
             elevator_order_array[i] = BOTH_OR_CAB;
         }
     }
@@ -104,24 +103,20 @@ void update_current_direction(){
     if(!get_order_count()){
         current_direction = HARDWARE_MOVEMENT_STOP;
     } else if(current_direction == HARDWARE_MOVEMENT_STOP && !check_floor_number()){
-        
-        //printf("Last direction is: %d \n", last_direction);
-        if (last_direction == HARDWARE_MOVEMENT_DOWN){
+        if (direction_from_last_floor == HARDWARE_MOVEMENT_DOWN){
             if (check_orders_below(get_current_floor())){
                 current_direction = HARDWARE_MOVEMENT_DOWN;
             }
             else if (check_orders_above(get_current_floor()-1)){
                 current_direction = HARDWARE_MOVEMENT_UP;
             }
-        } else if (last_direction == HARDWARE_MOVEMENT_UP){
+        } else if (direction_from_last_floor == HARDWARE_MOVEMENT_UP){
             if (check_orders_below(get_current_floor()+1)){
                 current_direction = HARDWARE_MOVEMENT_DOWN;
             } else if (check_orders_above(get_current_floor())){
                 current_direction = HARDWARE_MOVEMENT_UP;
             }
         }
-        last_direction = get_current_direction();
-
     } else if(check_orders_above(get_current_floor()) && !check_orders_below(get_current_floor())){
         current_direction = HARDWARE_MOVEMENT_UP;
     } else if(check_orders_below(get_current_floor()) && !check_orders_above(get_current_floor())){

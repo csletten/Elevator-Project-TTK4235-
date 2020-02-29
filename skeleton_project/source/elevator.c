@@ -10,7 +10,7 @@ int FLOOR_COUNT = 4;
 int BUTTON_COUNT = 3;
 
 static int current_floor = 0;
-int last_direction;
+int direction_from_last_floor;
 
 CurrentState state = IDLE;
 
@@ -47,6 +47,7 @@ int check_floor_number()
 void update_current_floor(){
     if (check_floor_number()){
         current_floor = check_floor_number() - 1;
+        direction_from_last_floor = get_current_direction();
     }
 }
 
@@ -76,36 +77,26 @@ void run_elevator(){
         handle_lights();
         handle_orders();
         update_current_floor();
-        //printf("Current state: %d \n", state);
-        //printf("UP: %d ", UP);
-        //printf("Floor Count: %d \n", get_order_count());
         switch (state)
         {
         case IDLE:
-            //printf("IDLE STATE \n");
             update_current_direction();
-            printf("bool_order_at_floor: %d \n", bool_order_at_floor(current_floor));
             if(bool_order_at_floor(current_floor) && check_floor_number()){
-                //print_all_orders();
-                //printf("returning to FLOOR \n");
                 state = FLOOR;
             } else if(get_current_direction() != HARDWARE_MOVEMENT_STOP){
-                //printf("Current direction: %d", get_current_direction());
                 hardware_command_movement(get_current_direction());
-                //printf("RUNNING");
+                if(check_floor_number()){
+                    direction_from_last_floor = get_current_direction();
+                }
                 state = RUNNING;
             }
             break;
 
         case RUNNING:
-            //printf("RUNNING STATE \n");
-            //hardware_command_movement(get_current_direction());
             handle_lights();
             handle_orders();
             update_current_floor();
             if(hardware_read_stop_signal()){
-                last_direction = get_current_direction();
-                //printf("IN RUNNING, Last dir: %d \n", last_direction);
                 state = EMERGENCY_STOP;
             } else if(check_arrival()){
                 hardware_command_movement(HARDWARE_MOVEMENT_STOP);
@@ -140,14 +131,13 @@ void run_elevator(){
                     state = IDLE;
                 } else{
                     hardware_command_movement(get_current_direction());
+                    direction_from_last_floor = get_current_direction();
                     state = RUNNING;
                 }
             }
             break;
 
         case EMERGENCY_STOP:
-            //printf("EM.STOP STATE \n");
-            //last_direction = get_current_direction();
             set_current_direction(HARDWARE_MOVEMENT_STOP);
             hardware_command_movement(get_current_direction());
             clear_all_orders();
