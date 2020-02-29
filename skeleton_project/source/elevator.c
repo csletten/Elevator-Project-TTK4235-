@@ -70,6 +70,7 @@ void run_elevator(){
     handle_orders();
     elevator_startup();
     int stopped_while_open;
+    int repeated_open;
 
     while (1){
         handle_lights();
@@ -113,28 +114,26 @@ void run_elevator(){
             break;
 
         case FLOOR:
-            //printf("FLOOR STATE \n");
             hardware_command_door_open(1);
-            //printf("Current floor %d \n ", current_floor+1);
-            set_queue(current_floor, 0);
-            //printf("PRE handling \n");
-            //printf("ORDER Cou");
-            //print_all_orders();
-            //printf("POST handling \n");
-            //print_all_orders();
+            repeated_open = 0;
             timer_start_timer(3000);
-            //printf("DOOR \n");
-            //printf("Up press %d \n", check_up_at_floor());
-            //printf("DOWN press %d \n", check_down_at_floor());
-            //printf("INSIDE press %d \n", check_both_or_cab_at_floor());
+
             while (!timer_check_expired()){
                 set_queue(current_floor, 0);
                 handle_lights();
                 handle_orders();
+                if(hardware_read_stop_signal()){
+                    state = EMERGENCY_STOP;
+                    break;
+                } else if(bool_order_at_floor(current_floor)){
+                    state = FLOOR;
+                    repeated_open = 1;
+                    break;
+                }
             }
             if (hardware_read_obstruction_signal()){
                 state = OBSTRUCTED;
-            } else{
+            } else if(!repeated_open){
                 hardware_command_door_open(0);
                 update_current_direction();
                 if(get_current_direction() == HARDWARE_MOVEMENT_STOP){
@@ -143,7 +142,6 @@ void run_elevator(){
                     hardware_command_movement(get_current_direction());
                     state = RUNNING;
                 }
-
             }
             break;
 
@@ -153,6 +151,7 @@ void run_elevator(){
             set_current_direction(HARDWARE_MOVEMENT_STOP);
             hardware_command_movement(get_current_direction());
             clear_all_orders();
+            handle_lights();
             stopped_while_open = 0;
             if (check_floor_number()){
                 while (hardware_read_stop_signal()){
@@ -161,6 +160,7 @@ void run_elevator(){
                 timer_start_timer(3000);
                 
                 while (!timer_check_expired()){
+                    handle_lights();
                     hardware_command_stop_light(hardware_read_stop_signal());
                     if(hardware_read_stop_signal()){
                         stopped_while_open = 1;
