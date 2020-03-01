@@ -104,7 +104,7 @@ int orders_get_order_count(){
 void orders_update_current_direction(){
     if(!orders_get_order_count()){
         current_direction = HARDWARE_MOVEMENT_STOP;
-    } else if(current_direction == HARDWARE_MOVEMENT_STOP && !check_floor_number()){
+    } else if(current_direction == HARDWARE_MOVEMENT_STOP && !elevator_one_indexed_floor_number()){
         if (direction_from_last_floor == HARDWARE_MOVEMENT_DOWN){
             if (orders_check_orders_below(elevator_get_current_floor())){
                 current_direction = HARDWARE_MOVEMENT_DOWN;
@@ -128,7 +128,7 @@ void orders_update_current_direction(){
 
 int orders_check_up_at_floor(){
     for(int i = 1; i < get_FLOOR_COUNT()+1; ++i){
-        if(i == check_floor_number() && elevator_order_array[i-1] == UP){
+        if(i == elevator_one_indexed_floor_number() && elevator_order_array[i-1] == UP){
             return 1;
         }
     }
@@ -137,7 +137,7 @@ int orders_check_up_at_floor(){
 
 int orders_check_down_at_floor(){
     for(int i = 1; i < get_FLOOR_COUNT()+1; ++i){
-        if(i == check_floor_number() && elevator_order_array[i-1] == DOWN){
+        if(i == elevator_one_indexed_floor_number() && elevator_order_array[i-1] == DOWN){
             return 1;
         }
     }
@@ -146,7 +146,7 @@ int orders_check_down_at_floor(){
 
 int orders_check_both_or_cab_at_floor(){
     for(int i = 1; i < get_FLOOR_COUNT()+1; ++i){
-        if(i == check_floor_number() && elevator_order_array[i-1] == BOTH_OR_CAB){
+        if(i == elevator_one_indexed_floor_number() && elevator_order_array[i-1] == BOTH_OR_CAB){
             return 1;
         }
     }
