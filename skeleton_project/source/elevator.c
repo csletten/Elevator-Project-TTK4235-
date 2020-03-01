@@ -71,6 +71,7 @@ void elevator_run_elevator(){
     elevator_startup();
     int stopped_while_open;
     int repeated_open;
+    int stopped_while_obstructed;
 
     while (1){
         lights_set_and_clear_lights();
@@ -106,6 +107,7 @@ void elevator_run_elevator(){
         case FLOOR:
             hardware_command_door_open(1);
             repeated_open = 0;
+            orders_set_order_at_floor(current_floor, 0);
             timer_start_timer(3000);
 
             while (!timer_check_expired()){
@@ -142,6 +144,10 @@ void elevator_run_elevator(){
             orders_clear_all_orders();
             lights_set_and_clear_lights();
             stopped_while_open = 0;
+            if(hardware_read_obstruction_signal()){
+                state = OBSTRUCTED;
+                break;
+            }
             if (elevator_one_indexed_floor_number()){
                 while (hardware_read_stop_signal()){
                     hardware_command_door_open(1);
@@ -169,15 +175,19 @@ void elevator_run_elevator(){
             break;
 
         case OBSTRUCTED:
-            if (elevator_one_indexed_floor_number()){
-                timer_start_timer(3000);
-                while (!timer_check_expired()){
-                    lights_set_and_clear_lights();
-                    orders_set_all_orders();
+            stopped_while_obstructed = 0;
+            while (elevator_one_indexed_floor_number() && hardware_read_obstruction_signal()){
+                orders_set_order_at_floor(current_floor, 0);
+                lights_set_and_clear_lights();
+                orders_set_all_orders();
+                if(hardware_read_stop_signal()){
+                    stopped_while_obstructed = 1;
+                    state = EMERGENCY_STOP;
+                    break;
                 }
+            }
+            if(!stopped_while_obstructed){
                 state = FLOOR;
-            } else{
-                state = IDLE;
             }
             break;
         }
