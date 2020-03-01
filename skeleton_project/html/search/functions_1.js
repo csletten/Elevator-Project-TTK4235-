@@ -1,14 +1,13 @@
 var searchData=
 [
-  ['check_5farrival',['check_arrival',['../orders_8c.html#a0be2dc6cef3d1e0ebcc153b9b0f78d93',1,'check_arrival():&#160;orders.c'],['../orders_8h.html#a0be2dc6cef3d1e0ebcc153b9b0f78d93',1,'check_arrival():&#160;orders.c']]],
-  ['check_5fboth_5for_5fcab_5fat_5ffloor',['check_both_or_cab_at_floor',['../orders_8c.html#aa2814fca8943e13c07a75aca10cc4517',1,'check_both_or_cab_at_floor():&#160;orders.c'],['../orders_8h.html#aa2814fca8943e13c07a75aca10cc4517',1,'check_both_or_cab_at_floor():&#160;orders.c']]],
-  ['check_5fdown_5fat_5ffloor',['check_down_at_floor',['../orders_8c.html#a6a754d33f3fb49024aea10f590f25dea',1,'check_down_at_floor():&#160;orders.c'],['../orders_8h.html#a6a754d33f3fb49024aea10f590f25dea',1,'check_down_at_floor():&#160;orders.c']]],
-  ['check_5ffloor_5fnumber',['check_floor_number',['../elevator_8c.html#acbce1b7b0ebdde9d658511436d2a20bc',1,'check_floor_number():&#160;elevator.c'],['../elevator_8h.html#acbce1b7b0ebdde9d658511436d2a20bc',1,'check_floor_number():&#160;elevator.c']]],
-  ['check_5forders_5fabove',['check_orders_above',['../orders_8c.html#ae1f8082a7b2f16cecfd3ace6d8c6d73f',1,'check_orders_above(int starting_point):&#160;orders.c'],['../orders_8h.html#ae1f8082a7b2f16cecfd3ace6d8c6d73f',1,'check_orders_above(int starting_point):&#160;orders.c']]],
-  ['check_5forders_5fbelow',['check_orders_below',['../orders_8c.html#a46e249c28b02726e1867ae718644a33f',1,'check_orders_below(int starting_point):&#160;orders.c'],['../orders_8h.html#a46e249c28b02726e1867ae718644a33f',1,'check_orders_below(int starting_point):&#160;orders.c']]],
-  ['check_5fup_5fat_5ffloor',['check_up_at_floor',['../orders_8c.html#a263178a16b07955e026ff65f9f246d60',1,'check_up_at_floor():&#160;orders.c'],['../orders_8h.html#a263178a16b07955e026ff65f9f246d60',1,'check_up_at_floor():&#160;orders.c']]],
-  ['clear_5fall_5forders',['clear_all_orders',['../orders_8c.html#a6206e5203639ca23d84820e2ffb108a3',1,'clear_all_orders():&#160;orders.c'],['../orders_8h.html#a6206e5203639ca23d84820e2ffb108a3',1,'clear_all_orders():&#160;orders.c']]],
-  ['clear_5forder_5flights_5fdown',['clear_order_lights_down',['../lights_8c.html#aa327ce0cb429b9496dc4545dd6334132',1,'clear_order_lights_down():&#160;lights.c'],['../lights_8h.html#aa327ce0cb429b9496dc4545dd6334132',1,'clear_order_lights_down():&#160;lights.c']]],
-  ['clear_5forder_5flights_5finside',['clear_order_lights_inside',['../lights_8c.html#a2a9a3a5f2e7f7d944a784026bb138659',1,'clear_order_lights_inside():&#160;lights.c'],['../lights_8h.html#a2a9a3a5f2e7f7d944a784026bb138659',1,'clear_order_lights_inside():&#160;lights.c']]],
-  ['clear_5forder_5flights_5fup',['clear_order_lights_up',['../lights_8c.html#ad8a5a5bf8f04d57489b8b48faf47e472',1,'clear_order_lights_up():&#160;lights.c'],['../lights_8h.html#ad8a5a5bf8f04d57489b8b48faf47e472',1,'clear_order_lights_up():&#160;lights.c']]]
+  ['hardware_5fcommand_5fdoor_5fopen',['hardware_command_door_open',['../hardware_8h.html#a80d99ddaa8e7b58c9a88b60ea553c1b6',1,'hardware.h']]],
+  ['hardware_5fcommand_5ffloor_5findicator_5fon',['hardware_command_floor_indicator_on',['../hardware_8h.html#a407a6ec035ba357de6aa0fbe55501d1e',1,'hardware.h']]],
+  ['hardware_5fcommand_5fmovement',['hardware_command_movement',['../hardware_8h.html#a01de081ef0510a111053c18cd31afa27',1,'hardware.h']]],
+  ['hardware_5fcommand_5forder_5flight',['hardware_command_order_light',['../hardware_8h.html#aa9b33faa52f0ec5b614d3e7dc05be140',1,'hardware.h']]],
+  ['hardware_5fcommand_5fstop_5flight',['hardware_command_stop_light',['../hardware_8h.html#aa75b3ac17f72b25946414f48d0063a10',1,'hardware.h']]],
+  ['hardware_5finit',['hardware_init',['../hardware_8h.html#a054b8fb8768311d46be58d6a4890d771',1,'hardware.h']]],
+  ['hardware_5fread_5ffloor_5fsensor',['hardware_read_floor_sensor',['../hardware_8h.html#ab048489e6302bb5604aad753f2d7d501',1,'hardware.h']]],
+  ['hardware_5fread_5fobstruction_5fsignal',['hardware_read_obstruction_signal',['../hardware_8h.html#a459fe57a3ee4bc2a28e8a15b2ab14c2d',1,'hardware.h']]],
+  ['hardware_5fread_5forder',['hardware_read_order',['../hardware_8h.html#a87917f3aa093fb46ca821a400d011ee8',1,'hardware.h']]],
+  ['hardware_5fread_5fstop_5fsignal',['hardware_read_stop_signal',['../hardware_8h.html#a4a77b27c86675c00b513db3445966804',1,'hardware.h']]]
 ];

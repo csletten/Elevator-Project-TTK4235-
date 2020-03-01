@@ -13,8 +13,7 @@ Include dependency graph for elevator.\+h\+:\nopagebreak
 \includegraphics[width=172pt]{elevator_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,23 +40,23 @@ enum \hyperlink{elevator_8h_ab332af6e5749eb14fb0761f0b0ea1cc2}{Order\+State} \{ 
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{elevator_8h_a92ebb11dc8ea206c073a3509f413f513}{get\+\_\+state} ()
+int \hyperlink{elevator_8h_a0708c98c357f56f12e72a212e074cf79}{elevator\+\_\+get\+\_\+state} ()
 \begin{DoxyCompactList}\small\item\em Gets the current state. \end{DoxyCompactList}\item 
-void \hyperlink{elevator_8h_aaf9bfa44cd72fb017ce630879140fd4f}{set\+\_\+state} (\hyperlink{elevator_8h_a59f51b412d7dfa606a5bf634db2aec32}{Current\+State} new\+\_\+state)
+void \hyperlink{elevator_8h_af76e1c65d1b9f5ad232c8402bdf72d0f}{elevator\+\_\+set\+\_\+state} (\hyperlink{elevator_8h_a59f51b412d7dfa606a5bf634db2aec32}{Current\+State} new\+\_\+state)
 \begin{DoxyCompactList}\small\item\em Sets the state to {\ttfamily new\+\_\+state} . \end{DoxyCompactList}\item 
-int \hyperlink{elevator_8h_a72be1591c37ccc47bcddab6e87a729b8}{get\+\_\+current\+\_\+floor} ()
+int \hyperlink{elevator_8h_ad785f5909121c35151e975eb671d4ef9}{elevator\+\_\+get\+\_\+current\+\_\+floor} ()
 \begin{DoxyCompactList}\small\item\em Gets the current floor. \end{DoxyCompactList}\item 
-int \hyperlink{elevator_8h_a7f4b70feaa92b8a1ca3095ecc8a7cdb3}{get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT} ()
+int \hyperlink{elevator_8h_a45350efbdbe333355181a9d3338de783}{elevator\+\_\+get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT} ()
 \begin{DoxyCompactList}\small\item\em Gets F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT. \end{DoxyCompactList}\item 
-int \hyperlink{elevator_8h_ab9a12b9b0714983a20e36429bb74643e}{get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT} ()
+int \hyperlink{elevator_8h_a087b64f5708f96b5c5c3e2d0c5bda1bc}{elevator\+\_\+get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT} ()
 \begin{DoxyCompactList}\small\item\em Gets B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT. \end{DoxyCompactList}\item 
-int \hyperlink{elevator_8h_acbce1b7b0ebdde9d658511436d2a20bc}{check\+\_\+floor\+\_\+number} ()
+int \hyperlink{elevator_8h_a98484defeb96eb259484ae8fac108484}{elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number} ()
 \begin{DoxyCompactList}\small\item\em Checks the floor number. \end{DoxyCompactList}\item 
-void \hyperlink{elevator_8h_a01ba2d8dfbbfa8f6c6fab7372f751eda}{update\+\_\+current\+\_\+floor} ()
-\begin{DoxyCompactList}\small\item\em Updates the current\+\_\+floor variable to the non-\/zero return value of \hyperlink{elevator_8h_acbce1b7b0ebdde9d658511436d2a20bc}{check\+\_\+floor\+\_\+number()} \end{DoxyCompactList}\item 
+void \hyperlink{elevator_8h_a768ffeedf962a239aa3cb8468742fd06}{elevator\+\_\+update\+\_\+current\+\_\+floor} ()
+\begin{DoxyCompactList}\small\item\em Updates the current\+\_\+floor variable to the non-\/zero return value of \hyperlink{elevator_8h_a98484defeb96eb259484ae8fac108484}{elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number()} \end{DoxyCompactList}\item 
 void \hyperlink{elevator_8h_ac68447dda9a06fdb6c802303e170c98f}{elevator\+\_\+startup} ()
 \begin{DoxyCompactList}\small\item\em Initialises the elevator and runs the elevator to the closest floor below. \end{DoxyCompactList}\item 
-void \hyperlink{elevator_8h_a1690f0043d0c268acfba38c6c73cedb5}{run\+\_\+elevator} ()
+void \hyperlink{elevator_8h_a6da5e4f1c9ffccd598c4785e2fc68949}{elevator\+\_\+run\+\_\+elevator} ()
 \begin{DoxyCompactList}\small\item\em Runs the elevator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -134,11 +133,79 @@ Definition at line 23 of file elevator.\+h.
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{elevator_8h_acbce1b7b0ebdde9d658511436d2a20bc}\label{elevator_8h_acbce1b7b0ebdde9d658511436d2a20bc}} 
-\index{elevator.\+h@{elevator.\+h}!check\+\_\+floor\+\_\+number@{check\+\_\+floor\+\_\+number}}
-\index{check\+\_\+floor\+\_\+number@{check\+\_\+floor\+\_\+number}!elevator.\+h@{elevator.\+h}}
-\subsubsection{\texorpdfstring{check\+\_\+floor\+\_\+number()}{check\_floor\_number()}}
-{\footnotesize\ttfamily int check\+\_\+floor\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{elevator_8h_a087b64f5708f96b5c5c3e2d0c5bda1bc}\label{elevator_8h_a087b64f5708f96b5c5c3e2d0c5bda1bc}} 
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT@{elevator\+\_\+get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT}}
+\index{elevator\+\_\+get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT@{elevator\+\_\+get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT}!elevator.\+h@{elevator.\+h}}
+\subsubsection{\texorpdfstring{elevator\+\_\+get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+N\+T()}{elevator\_get\_BUTTON\_COUNT()}}
+{\footnotesize\ttfamily int elevator\+\_\+get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT. 
+
+\begin{DoxyReturn}{Returns}
+Returns B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT. 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_ad785f5909121c35151e975eb671d4ef9}\label{elevator_8h_ad785f5909121c35151e975eb671d4ef9}} 
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+get\+\_\+current\+\_\+floor@{elevator\+\_\+get\+\_\+current\+\_\+floor}}
+\index{elevator\+\_\+get\+\_\+current\+\_\+floor@{elevator\+\_\+get\+\_\+current\+\_\+floor}!elevator.\+h@{elevator.\+h}}
+\subsubsection{\texorpdfstring{elevator\+\_\+get\+\_\+current\+\_\+floor()}{elevator\_get\_current\_floor()}}
+{\footnotesize\ttfamily int elevator\+\_\+get\+\_\+current\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current floor. 
+
+\begin{DoxyReturn}{Returns}
+Return current\+\_\+floor. 
+\end{DoxyReturn}
+
+
+Definition at line 25 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a45350efbdbe333355181a9d3338de783}\label{elevator_8h_a45350efbdbe333355181a9d3338de783}} 
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT@{elevator\+\_\+get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT}}
+\index{elevator\+\_\+get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT@{elevator\+\_\+get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT}!elevator.\+h@{elevator.\+h}}
+\subsubsection{\texorpdfstring{elevator\+\_\+get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+N\+T()}{elevator\_get\_FLOOR\_COUNT()}}
+{\footnotesize\ttfamily int elevator\+\_\+get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT. 
+
+\begin{DoxyReturn}{Returns}
+Returns F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT. 
+\end{DoxyReturn}
+
+
+Definition at line 29 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a0708c98c357f56f12e72a212e074cf79}\label{elevator_8h_a0708c98c357f56f12e72a212e074cf79}} 
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+get\+\_\+state@{elevator\+\_\+get\+\_\+state}}
+\index{elevator\+\_\+get\+\_\+state@{elevator\+\_\+get\+\_\+state}!elevator.\+h@{elevator.\+h}}
+\subsubsection{\texorpdfstring{elevator\+\_\+get\+\_\+state()}{elevator\_get\_state()}}
+{\footnotesize\ttfamily int elevator\+\_\+get\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current state. 
+
+\begin{DoxyReturn}{Returns}
+Return state. 
+\end{DoxyReturn}
+
+
+Definition at line 17 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a98484defeb96eb259484ae8fac108484}\label{elevator_8h_a98484defeb96eb259484ae8fac108484}} 
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number@{elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number}}
+\index{elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number@{elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number}!elevator.\+h@{elevator.\+h}}
+\subsubsection{\texorpdfstring{elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number()}{elevator\_one\_indexed\_floor\_number()}}
+{\footnotesize\ttfamily int elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -150,6 +217,39 @@ Return current floor. Return 0 if between floors.
 
 
 Definition at line 37 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_a6da5e4f1c9ffccd598c4785e2fc68949}\label{elevator_8h_a6da5e4f1c9ffccd598c4785e2fc68949}} 
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+run\+\_\+elevator@{elevator\+\_\+run\+\_\+elevator}}
+\index{elevator\+\_\+run\+\_\+elevator@{elevator\+\_\+run\+\_\+elevator}!elevator.\+h@{elevator.\+h}}
+\subsubsection{\texorpdfstring{elevator\+\_\+run\+\_\+elevator()}{elevator\_run\_elevator()}}
+{\footnotesize\ttfamily void elevator\+\_\+run\+\_\+elevator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the elevator. 
+
+
+
+Definition at line 68 of file elevator.\+c.
+
+\mbox{\Hypertarget{elevator_8h_af76e1c65d1b9f5ad232c8402bdf72d0f}\label{elevator_8h_af76e1c65d1b9f5ad232c8402bdf72d0f}} 
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+set\+\_\+state@{elevator\+\_\+set\+\_\+state}}
+\index{elevator\+\_\+set\+\_\+state@{elevator\+\_\+set\+\_\+state}!elevator.\+h@{elevator.\+h}}
+\subsubsection{\texorpdfstring{elevator\+\_\+set\+\_\+state()}{elevator\_set\_state()}}
+{\footnotesize\ttfamily void elevator\+\_\+set\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{elevator_8h_a59f51b412d7dfa606a5bf634db2aec32}{Current\+State}}]{new\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Sets the state to {\ttfamily new\+\_\+state} . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+state} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 21 of file elevator.\+c.
 
 \mbox{\Hypertarget{elevator_8h_ac68447dda9a06fdb6c802303e170c98f}\label{elevator_8h_ac68447dda9a06fdb6c802303e170c98f}} 
 \index{elevator.\+h@{elevator.\+h}!elevator\+\_\+startup@{elevator\+\_\+startup}}
@@ -165,116 +265,15 @@ Initialises the elevator and runs the elevator to the closest floor below.
 
 Definition at line 53 of file elevator.\+c.
 
-\mbox{\Hypertarget{elevator_8h_ab9a12b9b0714983a20e36429bb74643e}\label{elevator_8h_ab9a12b9b0714983a20e36429bb74643e}} 
-\index{elevator.\+h@{elevator.\+h}!get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT@{get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT}}
-\index{get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT@{get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT}!elevator.\+h@{elevator.\+h}}
-\subsubsection{\texorpdfstring{get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+N\+T()}{get\_BUTTON\_COUNT()}}
-{\footnotesize\ttfamily int get\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{elevator_8h_a768ffeedf962a239aa3cb8468742fd06}\label{elevator_8h_a768ffeedf962a239aa3cb8468742fd06}} 
+\index{elevator.\+h@{elevator.\+h}!elevator\+\_\+update\+\_\+current\+\_\+floor@{elevator\+\_\+update\+\_\+current\+\_\+floor}}
+\index{elevator\+\_\+update\+\_\+current\+\_\+floor@{elevator\+\_\+update\+\_\+current\+\_\+floor}!elevator.\+h@{elevator.\+h}}
+\subsubsection{\texorpdfstring{elevator\+\_\+update\+\_\+current\+\_\+floor()}{elevator\_update\_current\_floor()}}
+{\footnotesize\ttfamily void elevator\+\_\+update\+\_\+current\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Gets B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT. 
-
-\begin{DoxyReturn}{Returns}
-Returns B\+U\+T\+T\+O\+N\+\_\+\+C\+O\+U\+NT. 
-\end{DoxyReturn}
-
-
-Definition at line 33 of file elevator.\+c.
-
-\mbox{\Hypertarget{elevator_8h_a72be1591c37ccc47bcddab6e87a729b8}\label{elevator_8h_a72be1591c37ccc47bcddab6e87a729b8}} 
-\index{elevator.\+h@{elevator.\+h}!get\+\_\+current\+\_\+floor@{get\+\_\+current\+\_\+floor}}
-\index{get\+\_\+current\+\_\+floor@{get\+\_\+current\+\_\+floor}!elevator.\+h@{elevator.\+h}}
-\subsubsection{\texorpdfstring{get\+\_\+current\+\_\+floor()}{get\_current\_floor()}}
-{\footnotesize\ttfamily int get\+\_\+current\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Gets the current floor. 
-
-\begin{DoxyReturn}{Returns}
-Return current\+\_\+floor. 
-\end{DoxyReturn}
-
-
-Definition at line 25 of file elevator.\+c.
-
-\mbox{\Hypertarget{elevator_8h_a7f4b70feaa92b8a1ca3095ecc8a7cdb3}\label{elevator_8h_a7f4b70feaa92b8a1ca3095ecc8a7cdb3}} 
-\index{elevator.\+h@{elevator.\+h}!get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT@{get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT}}
-\index{get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT@{get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT}!elevator.\+h@{elevator.\+h}}
-\subsubsection{\texorpdfstring{get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+N\+T()}{get\_FLOOR\_COUNT()}}
-{\footnotesize\ttfamily int get\+\_\+\+F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Gets F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT. 
-
-\begin{DoxyReturn}{Returns}
-Returns F\+L\+O\+O\+R\+\_\+\+C\+O\+U\+NT. 
-\end{DoxyReturn}
-
-
-Definition at line 29 of file elevator.\+c.
-
-\mbox{\Hypertarget{elevator_8h_a92ebb11dc8ea206c073a3509f413f513}\label{elevator_8h_a92ebb11dc8ea206c073a3509f413f513}} 
-\index{elevator.\+h@{elevator.\+h}!get\+\_\+state@{get\+\_\+state}}
-\index{get\+\_\+state@{get\+\_\+state}!elevator.\+h@{elevator.\+h}}
-\subsubsection{\texorpdfstring{get\+\_\+state()}{get\_state()}}
-{\footnotesize\ttfamily int get\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Gets the current state. 
-
-\begin{DoxyReturn}{Returns}
-Return state. 
-\end{DoxyReturn}
-
-
-Definition at line 17 of file elevator.\+c.
-
-\mbox{\Hypertarget{elevator_8h_a1690f0043d0c268acfba38c6c73cedb5}\label{elevator_8h_a1690f0043d0c268acfba38c6c73cedb5}} 
-\index{elevator.\+h@{elevator.\+h}!run\+\_\+elevator@{run\+\_\+elevator}}
-\index{run\+\_\+elevator@{run\+\_\+elevator}!elevator.\+h@{elevator.\+h}}
-\subsubsection{\texorpdfstring{run\+\_\+elevator()}{run\_elevator()}}
-{\footnotesize\ttfamily void run\+\_\+elevator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Runs the elevator. 
-
-
-
-Definition at line 68 of file elevator.\+c.
-
-\mbox{\Hypertarget{elevator_8h_aaf9bfa44cd72fb017ce630879140fd4f}\label{elevator_8h_aaf9bfa44cd72fb017ce630879140fd4f}} 
-\index{elevator.\+h@{elevator.\+h}!set\+\_\+state@{set\+\_\+state}}
-\index{set\+\_\+state@{set\+\_\+state}!elevator.\+h@{elevator.\+h}}
-\subsubsection{\texorpdfstring{set\+\_\+state()}{set\_state()}}
-{\footnotesize\ttfamily void set\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{elevator_8h_a59f51b412d7dfa606a5bf634db2aec32}{Current\+State}}]{new\+\_\+state }\end{DoxyParamCaption})}
-
-
-
-Sets the state to {\ttfamily new\+\_\+state} . 
-
-
-\begin{DoxyParams}{Parameters}
-{\em new\+\_\+state} & \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line 21 of file elevator.\+c.
-
-\mbox{\Hypertarget{elevator_8h_a01ba2d8dfbbfa8f6c6fab7372f751eda}\label{elevator_8h_a01ba2d8dfbbfa8f6c6fab7372f751eda}} 
-\index{elevator.\+h@{elevator.\+h}!update\+\_\+current\+\_\+floor@{update\+\_\+current\+\_\+floor}}
-\index{update\+\_\+current\+\_\+floor@{update\+\_\+current\+\_\+floor}!elevator.\+h@{elevator.\+h}}
-\subsubsection{\texorpdfstring{update\+\_\+current\+\_\+floor()}{update\_current\_floor()}}
-{\footnotesize\ttfamily void update\+\_\+current\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Updates the current\+\_\+floor variable to the non-\/zero return value of \hyperlink{elevator_8h_acbce1b7b0ebdde9d658511436d2a20bc}{check\+\_\+floor\+\_\+number()} 
+Updates the current\+\_\+floor variable to the non-\/zero return value of \hyperlink{elevator_8h_a98484defeb96eb259484ae8fac108484}{elevator\+\_\+one\+\_\+indexed\+\_\+floor\+\_\+number()} 
 
 
 

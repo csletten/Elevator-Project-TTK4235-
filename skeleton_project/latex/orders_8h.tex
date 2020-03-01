@@ -5,8 +5,7 @@
 Order handling, including the queue system.  
 
 
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,43 +15,43 @@ This graph shows which files directly or indirectly include this file\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{orders_8h_ac426009b9dd5bd9bc76949a454a320a6}{get\+\_\+current\+\_\+direction} ()
+int \hyperlink{orders_8h_ae7022434adb156a7f6214afbf9b2e969}{orders\+\_\+get\+\_\+current\+\_\+direction} ()
 \begin{DoxyCompactList}\small\item\em Gets the current direction. \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_acf6f3f01ccc5d2cc5678499e4a992400}{set\+\_\+current\+\_\+direction} (int direction)
+void \hyperlink{orders_8h_aa5bfb7a139848dc5a708e80842716902}{orders\+\_\+set\+\_\+current\+\_\+direction} (int direction)
 \begin{DoxyCompactList}\small\item\em Sets current\+\_\+direction to {\ttfamily direction} . \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_acf20a30f171233e040ea4b4b2e5f4a46}{get\+\_\+order\+\_\+at\+\_\+floor} (int floor)
+int \hyperlink{orders_8h_a8d99ecbe0fc29ef08273f1467e8be3e0}{orders\+\_\+get\+\_\+order\+\_\+at\+\_\+floor} (int floor)
 \begin{DoxyCompactList}\small\item\em Gets the value of elevator\+\_\+order\+\_\+array with index {\ttfamily floor} . \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_ac6cd7c279c95b7a210719dffada982d8}{set\+\_\+order\+\_\+at\+\_\+floor} (int floor, int order)
+void \hyperlink{orders_8h_a51c15ed40dbb068318089cb586cb2600}{orders\+\_\+set\+\_\+order\+\_\+at\+\_\+floor} (int floor, int order)
 \begin{DoxyCompactList}\small\item\em Sets the value of elevator\+\_\+order\+\_\+array with index {\ttfamily floor} to {\ttfamily order} . \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_ae53d74727711dab412fb4c01aaa029da}{set\+\_\+order\+\_\+up} ()
+void \hyperlink{orders_8h_a0c5303bf6bae07c7c18025d5cef4516e}{orders\+\_\+set\+\_\+order\+\_\+up} ()
 \begin{DoxyCompactList}\small\item\em Updates elevator\+\_\+order\+\_\+array if any of the order up buttons are pressed. \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_a4cf3627d1c6a40e9af29458da858558b}{set\+\_\+order\+\_\+down} ()
+void \hyperlink{orders_8h_a7d9a073c3f2b0c3b771db04342e8c732}{orders\+\_\+set\+\_\+order\+\_\+down} ()
 \begin{DoxyCompactList}\small\item\em Updates elevator\+\_\+order\+\_\+array if any of the order down buttons are pressed. \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_ad81206d15e03830095bf5012a7ec48e0}{set\+\_\+order\+\_\+inside} ()
+void \hyperlink{orders_8h_a3137bab280b8aa973bd06d366ceab7d9}{orders\+\_\+set\+\_\+order\+\_\+inside} ()
 \begin{DoxyCompactList}\small\item\em Updates elevator\+\_\+order\+\_\+array if any of the order inside buttons are pressed. \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_a60ab7f01650e26035d6ed4c623d3659d}{handle\+\_\+orders} ()
+void \hyperlink{orders_8h_ad0fd30ca5d8c4032edd4aa93d4a9ba97}{orders\+\_\+set\+\_\+all\+\_\+orders} ()
 \begin{DoxyCompactList}\small\item\em Updates elevator\+\_\+order\+\_\+array if any order buttons are pressed. \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_ae1f8082a7b2f16cecfd3ace6d8c6d73f}{check\+\_\+orders\+\_\+above} (int starting\+\_\+point)
+int \hyperlink{orders_8h_a5a2785f0c655284a88eb220d4351d3c2}{orders\+\_\+check\+\_\+orders\+\_\+above} (int starting\+\_\+point)
 \begin{DoxyCompactList}\small\item\em Checks if there are any order above {\ttfamily starting\+\_\+point} . \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_a46e249c28b02726e1867ae718644a33f}{check\+\_\+orders\+\_\+below} (int starting\+\_\+point)
+int \hyperlink{orders_8h_a3363b71dbb333a7143ddeaff762246ec}{orders\+\_\+check\+\_\+orders\+\_\+below} (int starting\+\_\+point)
 \begin{DoxyCompactList}\small\item\em Checks if there are any order below {\ttfamily starting\+\_\+point} . \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_a5a309ac4f781a8b05b200d09a16987dc}{get\+\_\+order\+\_\+count} ()
+int \hyperlink{orders_8h_ac5944b681e90dffd96324cedd4b559c5}{orders\+\_\+get\+\_\+order\+\_\+count} ()
 \begin{DoxyCompactList}\small\item\em Gets the total amount of unattended orders. \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_a1ae3ab02b290c9ba95abb9a3fc5bdbd1}{update\+\_\+current\+\_\+direction} ()
+void \hyperlink{orders_8h_a554caa4c9a00d69d4785d08cb1f9fea8}{orders\+\_\+update\+\_\+current\+\_\+direction} ()
 \begin{DoxyCompactList}\small\item\em Updates current\+\_\+direction based on existing orders, current\+\_\+direction and last\+\_\+direction. \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_a263178a16b07955e026ff65f9f246d60}{check\+\_\+up\+\_\+at\+\_\+floor} ()
+int \hyperlink{orders_8h_a52ecdf54de216a5ab926c0ea7d2e27f0}{orders\+\_\+check\+\_\+up\+\_\+at\+\_\+floor} ()
 \begin{DoxyCompactList}\small\item\em Checks if there are any up orders at the current floor. \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_a6a754d33f3fb49024aea10f590f25dea}{check\+\_\+down\+\_\+at\+\_\+floor} ()
+int \hyperlink{orders_8h_a32c069d60619671c3d44165f9fc69db5}{orders\+\_\+check\+\_\+down\+\_\+at\+\_\+floor} ()
 \begin{DoxyCompactList}\small\item\em Checks if there are any down orders at the current floor. \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_aa2814fca8943e13c07a75aca10cc4517}{check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor} ()
+int \hyperlink{orders_8h_a54248a8bca30e580d30232840f08325d}{orders\+\_\+check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor} ()
 \begin{DoxyCompactList}\small\item\em Checks if there are any cab orders or up and down orders simultaneously at the current floor. \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_a0be2dc6cef3d1e0ebcc153b9b0f78d93}{check\+\_\+arrival} ()
+int \hyperlink{orders_8h_a4fe82d0931ce33d9b7b0f691c5bbd756}{orders\+\_\+check\+\_\+arrival} ()
 \begin{DoxyCompactList}\small\item\em Checks if the elevator has arrived at a floor with an order that needs to be attended. \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_a6206e5203639ca23d84820e2ffb108a3}{clear\+\_\+all\+\_\+orders} ()
+void \hyperlink{orders_8h_a300c432c8433e3f973f92b05a097efe9}{orders\+\_\+clear\+\_\+all\+\_\+orders} ()
 \begin{DoxyCompactList}\small\item\em Clears all existing orders in elevator\+\_\+order\+\_\+array. \end{DoxyCompactList}\item 
-void \hyperlink{orders_8h_a246f5cd101e20bda3d5f2607f8e56f0c}{print\+\_\+all\+\_\+orders} ()
+void \hyperlink{orders_8h_a29838c97d5dd6e2e26274b500addafa1}{orders\+\_\+print\+\_\+all\+\_\+orders} ()
 \begin{DoxyCompactList}\small\item\em Prints all existing orders in elevator\+\_\+order\+\_\+array. \end{DoxyCompactList}\item 
-int \hyperlink{orders_8h_a47efe536e1dd0d64e2f4edf1af2345b4}{bool\+\_\+order\+\_\+at\+\_\+floor} (int floor)
+int \hyperlink{orders_8h_ad610f171275c445567650f3e7fc679a8}{orders\+\_\+bool\+\_\+order\+\_\+at\+\_\+floor} (int floor)
 \begin{DoxyCompactList}\small\item\em Checks if there are any orders at at {\ttfamily floor} . \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -62,11 +61,11 @@ Order handling, including the queue system.
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{orders_8h_a47efe536e1dd0d64e2f4edf1af2345b4}\label{orders_8h_a47efe536e1dd0d64e2f4edf1af2345b4}} 
-\index{orders.\+h@{orders.\+h}!bool\+\_\+order\+\_\+at\+\_\+floor@{bool\+\_\+order\+\_\+at\+\_\+floor}}
-\index{bool\+\_\+order\+\_\+at\+\_\+floor@{bool\+\_\+order\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{bool\+\_\+order\+\_\+at\+\_\+floor()}{bool\_order\_at\_floor()}}
-{\footnotesize\ttfamily int bool\+\_\+order\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_ad610f171275c445567650f3e7fc679a8}\label{orders_8h_ad610f171275c445567650f3e7fc679a8}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+bool\+\_\+order\+\_\+at\+\_\+floor@{orders\+\_\+bool\+\_\+order\+\_\+at\+\_\+floor}}
+\index{orders\+\_\+bool\+\_\+order\+\_\+at\+\_\+floor@{orders\+\_\+bool\+\_\+order\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+bool\+\_\+order\+\_\+at\+\_\+floor()}{orders\_bool\_order\_at\_floor()}}
+{\footnotesize\ttfamily int orders\+\_\+bool\+\_\+order\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
 
 
 
@@ -82,13 +81,13 @@ Return 1 if order at requested floor. Return 0 otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 185 of file orders.\+c.
+Definition at line 187 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a0be2dc6cef3d1e0ebcc153b9b0f78d93}\label{orders_8h_a0be2dc6cef3d1e0ebcc153b9b0f78d93}} 
-\index{orders.\+h@{orders.\+h}!check\+\_\+arrival@{check\+\_\+arrival}}
-\index{check\+\_\+arrival@{check\+\_\+arrival}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{check\+\_\+arrival()}{check\_arrival()}}
-{\footnotesize\ttfamily int check\+\_\+arrival (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a4fe82d0931ce33d9b7b0f691c5bbd756}\label{orders_8h_a4fe82d0931ce33d9b7b0f691c5bbd756}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+check\+\_\+arrival@{orders\+\_\+check\+\_\+arrival}}
+\index{orders\+\_\+check\+\_\+arrival@{orders\+\_\+check\+\_\+arrival}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+check\+\_\+arrival()}{orders\_check\_arrival()}}
+{\footnotesize\ttfamily int orders\+\_\+check\+\_\+arrival (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -99,13 +98,13 @@ Return 1 if arrived at floor with order. Return 0 otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 154 of file orders.\+c.
+Definition at line 156 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_aa2814fca8943e13c07a75aca10cc4517}\label{orders_8h_aa2814fca8943e13c07a75aca10cc4517}} 
-\index{orders.\+h@{orders.\+h}!check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor@{check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor}}
-\index{check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor@{check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor()}{check\_both\_or\_cab\_at\_floor()}}
-{\footnotesize\ttfamily int check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a54248a8bca30e580d30232840f08325d}\label{orders_8h_a54248a8bca30e580d30232840f08325d}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor@{orders\+\_\+check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor}}
+\index{orders\+\_\+check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor@{orders\+\_\+check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor()}{orders\_check\_both\_or\_cab\_at\_floor()}}
+{\footnotesize\ttfamily int orders\+\_\+check\+\_\+both\+\_\+or\+\_\+cab\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -116,13 +115,13 @@ Return 1 if cab order or up and down order at floor. Return 0 otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 145 of file orders.\+c.
+Definition at line 147 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a6a754d33f3fb49024aea10f590f25dea}\label{orders_8h_a6a754d33f3fb49024aea10f590f25dea}} 
-\index{orders.\+h@{orders.\+h}!check\+\_\+down\+\_\+at\+\_\+floor@{check\+\_\+down\+\_\+at\+\_\+floor}}
-\index{check\+\_\+down\+\_\+at\+\_\+floor@{check\+\_\+down\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{check\+\_\+down\+\_\+at\+\_\+floor()}{check\_down\_at\_floor()}}
-{\footnotesize\ttfamily int check\+\_\+down\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a32c069d60619671c3d44165f9fc69db5}\label{orders_8h_a32c069d60619671c3d44165f9fc69db5}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+check\+\_\+down\+\_\+at\+\_\+floor@{orders\+\_\+check\+\_\+down\+\_\+at\+\_\+floor}}
+\index{orders\+\_\+check\+\_\+down\+\_\+at\+\_\+floor@{orders\+\_\+check\+\_\+down\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+check\+\_\+down\+\_\+at\+\_\+floor()}{orders\_check\_down\_at\_floor()}}
+{\footnotesize\ttfamily int orders\+\_\+check\+\_\+down\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -133,13 +132,13 @@ Return 1 if down order at floor. Return 0 otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 136 of file orders.\+c.
+Definition at line 138 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_ae1f8082a7b2f16cecfd3ace6d8c6d73f}\label{orders_8h_ae1f8082a7b2f16cecfd3ace6d8c6d73f}} 
-\index{orders.\+h@{orders.\+h}!check\+\_\+orders\+\_\+above@{check\+\_\+orders\+\_\+above}}
-\index{check\+\_\+orders\+\_\+above@{check\+\_\+orders\+\_\+above}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{check\+\_\+orders\+\_\+above()}{check\_orders\_above()}}
-{\footnotesize\ttfamily int check\+\_\+orders\+\_\+above (\begin{DoxyParamCaption}\item[{int}]{starting\+\_\+point }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a5a2785f0c655284a88eb220d4351d3c2}\label{orders_8h_a5a2785f0c655284a88eb220d4351d3c2}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+check\+\_\+orders\+\_\+above@{orders\+\_\+check\+\_\+orders\+\_\+above}}
+\index{orders\+\_\+check\+\_\+orders\+\_\+above@{orders\+\_\+check\+\_\+orders\+\_\+above}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+check\+\_\+orders\+\_\+above()}{orders\_check\_orders\_above()}}
+{\footnotesize\ttfamily int orders\+\_\+check\+\_\+orders\+\_\+above (\begin{DoxyParamCaption}\item[{int}]{starting\+\_\+point }\end{DoxyParamCaption})}
 
 
 
@@ -155,13 +154,13 @@ Return 1 if there are orders above. Return 0 otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 70 of file orders.\+c.
+Definition at line 71 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a46e249c28b02726e1867ae718644a33f}\label{orders_8h_a46e249c28b02726e1867ae718644a33f}} 
-\index{orders.\+h@{orders.\+h}!check\+\_\+orders\+\_\+below@{check\+\_\+orders\+\_\+below}}
-\index{check\+\_\+orders\+\_\+below@{check\+\_\+orders\+\_\+below}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{check\+\_\+orders\+\_\+below()}{check\_orders\_below()}}
-{\footnotesize\ttfamily int check\+\_\+orders\+\_\+below (\begin{DoxyParamCaption}\item[{int}]{starting\+\_\+point }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a3363b71dbb333a7143ddeaff762246ec}\label{orders_8h_a3363b71dbb333a7143ddeaff762246ec}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+check\+\_\+orders\+\_\+below@{orders\+\_\+check\+\_\+orders\+\_\+below}}
+\index{orders\+\_\+check\+\_\+orders\+\_\+below@{orders\+\_\+check\+\_\+orders\+\_\+below}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+check\+\_\+orders\+\_\+below()}{orders\_check\_orders\_below()}}
+{\footnotesize\ttfamily int orders\+\_\+check\+\_\+orders\+\_\+below (\begin{DoxyParamCaption}\item[{int}]{starting\+\_\+point }\end{DoxyParamCaption})}
 
 
 
@@ -177,13 +176,13 @@ Return 1 if there are orders below. Return 0 otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 81 of file orders.\+c.
+Definition at line 82 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a263178a16b07955e026ff65f9f246d60}\label{orders_8h_a263178a16b07955e026ff65f9f246d60}} 
-\index{orders.\+h@{orders.\+h}!check\+\_\+up\+\_\+at\+\_\+floor@{check\+\_\+up\+\_\+at\+\_\+floor}}
-\index{check\+\_\+up\+\_\+at\+\_\+floor@{check\+\_\+up\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{check\+\_\+up\+\_\+at\+\_\+floor()}{check\_up\_at\_floor()}}
-{\footnotesize\ttfamily int check\+\_\+up\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a52ecdf54de216a5ab926c0ea7d2e27f0}\label{orders_8h_a52ecdf54de216a5ab926c0ea7d2e27f0}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+check\+\_\+up\+\_\+at\+\_\+floor@{orders\+\_\+check\+\_\+up\+\_\+at\+\_\+floor}}
+\index{orders\+\_\+check\+\_\+up\+\_\+at\+\_\+floor@{orders\+\_\+check\+\_\+up\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+check\+\_\+up\+\_\+at\+\_\+floor()}{orders\_check\_up\_at\_floor()}}
+{\footnotesize\ttfamily int orders\+\_\+check\+\_\+up\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -194,13 +193,13 @@ Return 1 if up order at floor. Return 0 otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 127 of file orders.\+c.
+Definition at line 129 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a6206e5203639ca23d84820e2ffb108a3}\label{orders_8h_a6206e5203639ca23d84820e2ffb108a3}} 
-\index{orders.\+h@{orders.\+h}!clear\+\_\+all\+\_\+orders@{clear\+\_\+all\+\_\+orders}}
-\index{clear\+\_\+all\+\_\+orders@{clear\+\_\+all\+\_\+orders}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{clear\+\_\+all\+\_\+orders()}{clear\_all\_orders()}}
-{\footnotesize\ttfamily void clear\+\_\+all\+\_\+orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a300c432c8433e3f973f92b05a097efe9}\label{orders_8h_a300c432c8433e3f973f92b05a097efe9}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+clear\+\_\+all\+\_\+orders@{orders\+\_\+clear\+\_\+all\+\_\+orders}}
+\index{orders\+\_\+clear\+\_\+all\+\_\+orders@{orders\+\_\+clear\+\_\+all\+\_\+orders}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+clear\+\_\+all\+\_\+orders()}{orders\_clear\_all\_orders()}}
+{\footnotesize\ttfamily void orders\+\_\+clear\+\_\+all\+\_\+orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -208,13 +207,13 @@ Clears all existing orders in elevator\+\_\+order\+\_\+array.
 
 
 
-Definition at line 173 of file orders.\+c.
+Definition at line 175 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_ac426009b9dd5bd9bc76949a454a320a6}\label{orders_8h_ac426009b9dd5bd9bc76949a454a320a6}} 
-\index{orders.\+h@{orders.\+h}!get\+\_\+current\+\_\+direction@{get\+\_\+current\+\_\+direction}}
-\index{get\+\_\+current\+\_\+direction@{get\+\_\+current\+\_\+direction}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{get\+\_\+current\+\_\+direction()}{get\_current\_direction()}}
-{\footnotesize\ttfamily int get\+\_\+current\+\_\+direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_ae7022434adb156a7f6214afbf9b2e969}\label{orders_8h_ae7022434adb156a7f6214afbf9b2e969}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+get\+\_\+current\+\_\+direction@{orders\+\_\+get\+\_\+current\+\_\+direction}}
+\index{orders\+\_\+get\+\_\+current\+\_\+direction@{orders\+\_\+get\+\_\+current\+\_\+direction}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+get\+\_\+current\+\_\+direction()}{orders\_get\_current\_direction()}}
+{\footnotesize\ttfamily int orders\+\_\+get\+\_\+current\+\_\+direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -227,11 +226,11 @@ Return current\+\_\+direction.
 
 Definition at line 13 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_acf20a30f171233e040ea4b4b2e5f4a46}\label{orders_8h_acf20a30f171233e040ea4b4b2e5f4a46}} 
-\index{orders.\+h@{orders.\+h}!get\+\_\+order\+\_\+at\+\_\+floor@{get\+\_\+order\+\_\+at\+\_\+floor}}
-\index{get\+\_\+order\+\_\+at\+\_\+floor@{get\+\_\+order\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{get\+\_\+order\+\_\+at\+\_\+floor()}{get\_order\_at\_floor()}}
-{\footnotesize\ttfamily int get\+\_\+order\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a8d99ecbe0fc29ef08273f1467e8be3e0}\label{orders_8h_a8d99ecbe0fc29ef08273f1467e8be3e0}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+get\+\_\+order\+\_\+at\+\_\+floor@{orders\+\_\+get\+\_\+order\+\_\+at\+\_\+floor}}
+\index{orders\+\_\+get\+\_\+order\+\_\+at\+\_\+floor@{orders\+\_\+get\+\_\+order\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+get\+\_\+order\+\_\+at\+\_\+floor()}{orders\_get\_order\_at\_floor()}}
+{\footnotesize\ttfamily int orders\+\_\+get\+\_\+order\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor }\end{DoxyParamCaption})}
 
 
 
@@ -249,11 +248,11 @@ Return the value of elevator\+\_\+order\+\_\+array with selected index.
 
 Definition at line 21 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a5a309ac4f781a8b05b200d09a16987dc}\label{orders_8h_a5a309ac4f781a8b05b200d09a16987dc}} 
-\index{orders.\+h@{orders.\+h}!get\+\_\+order\+\_\+count@{get\+\_\+order\+\_\+count}}
-\index{get\+\_\+order\+\_\+count@{get\+\_\+order\+\_\+count}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{get\+\_\+order\+\_\+count()}{get\_order\_count()}}
-{\footnotesize\ttfamily int get\+\_\+order\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_ac5944b681e90dffd96324cedd4b559c5}\label{orders_8h_ac5944b681e90dffd96324cedd4b559c5}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+get\+\_\+order\+\_\+count@{orders\+\_\+get\+\_\+order\+\_\+count}}
+\index{orders\+\_\+get\+\_\+order\+\_\+count@{orders\+\_\+get\+\_\+order\+\_\+count}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+get\+\_\+order\+\_\+count()}{orders\_get\_order\_count()}}
+{\footnotesize\ttfamily int orders\+\_\+get\+\_\+order\+\_\+count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -264,27 +263,13 @@ Return the total amount of unattended orders.
 \end{DoxyReturn}
 
 
-Definition at line 92 of file orders.\+c.
+Definition at line 93 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a60ab7f01650e26035d6ed4c623d3659d}\label{orders_8h_a60ab7f01650e26035d6ed4c623d3659d}} 
-\index{orders.\+h@{orders.\+h}!handle\+\_\+orders@{handle\+\_\+orders}}
-\index{handle\+\_\+orders@{handle\+\_\+orders}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{handle\+\_\+orders()}{handle\_orders()}}
-{\footnotesize\ttfamily void handle\+\_\+orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Updates elevator\+\_\+order\+\_\+array if any order buttons are pressed. 
-
-
-
-Definition at line 64 of file orders.\+c.
-
-\mbox{\Hypertarget{orders_8h_a246f5cd101e20bda3d5f2607f8e56f0c}\label{orders_8h_a246f5cd101e20bda3d5f2607f8e56f0c}} 
-\index{orders.\+h@{orders.\+h}!print\+\_\+all\+\_\+orders@{print\+\_\+all\+\_\+orders}}
-\index{print\+\_\+all\+\_\+orders@{print\+\_\+all\+\_\+orders}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{print\+\_\+all\+\_\+orders()}{print\_all\_orders()}}
-{\footnotesize\ttfamily void print\+\_\+all\+\_\+orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a29838c97d5dd6e2e26274b500addafa1}\label{orders_8h_a29838c97d5dd6e2e26274b500addafa1}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+print\+\_\+all\+\_\+orders@{orders\+\_\+print\+\_\+all\+\_\+orders}}
+\index{orders\+\_\+print\+\_\+all\+\_\+orders@{orders\+\_\+print\+\_\+all\+\_\+orders}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+print\+\_\+all\+\_\+orders()}{orders\_print\_all\_orders()}}
+{\footnotesize\ttfamily void orders\+\_\+print\+\_\+all\+\_\+orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -292,13 +277,27 @@ Prints all existing orders in elevator\+\_\+order\+\_\+array.
 
 
 
-Definition at line 179 of file orders.\+c.
+Definition at line 181 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_acf6f3f01ccc5d2cc5678499e4a992400}\label{orders_8h_acf6f3f01ccc5d2cc5678499e4a992400}} 
-\index{orders.\+h@{orders.\+h}!set\+\_\+current\+\_\+direction@{set\+\_\+current\+\_\+direction}}
-\index{set\+\_\+current\+\_\+direction@{set\+\_\+current\+\_\+direction}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{set\+\_\+current\+\_\+direction()}{set\_current\_direction()}}
-{\footnotesize\ttfamily void set\+\_\+current\+\_\+direction (\begin{DoxyParamCaption}\item[{int}]{direction }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_ad0fd30ca5d8c4032edd4aa93d4a9ba97}\label{orders_8h_ad0fd30ca5d8c4032edd4aa93d4a9ba97}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+set\+\_\+all\+\_\+orders@{orders\+\_\+set\+\_\+all\+\_\+orders}}
+\index{orders\+\_\+set\+\_\+all\+\_\+orders@{orders\+\_\+set\+\_\+all\+\_\+orders}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+set\+\_\+all\+\_\+orders()}{orders\_set\_all\_orders()}}
+{\footnotesize\ttfamily void orders\+\_\+set\+\_\+all\+\_\+orders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates elevator\+\_\+order\+\_\+array if any order buttons are pressed. 
+
+
+
+Definition at line 65 of file orders.\+c.
+
+\mbox{\Hypertarget{orders_8h_aa5bfb7a139848dc5a708e80842716902}\label{orders_8h_aa5bfb7a139848dc5a708e80842716902}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+set\+\_\+current\+\_\+direction@{orders\+\_\+set\+\_\+current\+\_\+direction}}
+\index{orders\+\_\+set\+\_\+current\+\_\+direction@{orders\+\_\+set\+\_\+current\+\_\+direction}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+set\+\_\+current\+\_\+direction()}{orders\_set\_current\_direction()}}
+{\footnotesize\ttfamily void orders\+\_\+set\+\_\+current\+\_\+direction (\begin{DoxyParamCaption}\item[{int}]{direction }\end{DoxyParamCaption})}
 
 
 
@@ -313,11 +312,11 @@ Sets current\+\_\+direction to {\ttfamily direction} .
 
 Definition at line 17 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_ac6cd7c279c95b7a210719dffada982d8}\label{orders_8h_ac6cd7c279c95b7a210719dffada982d8}} 
-\index{orders.\+h@{orders.\+h}!set\+\_\+order\+\_\+at\+\_\+floor@{set\+\_\+order\+\_\+at\+\_\+floor}}
-\index{set\+\_\+order\+\_\+at\+\_\+floor@{set\+\_\+order\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{set\+\_\+order\+\_\+at\+\_\+floor()}{set\_order\_at\_floor()}}
-{\footnotesize\ttfamily void set\+\_\+order\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor,  }\item[{int}]{order }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a51c15ed40dbb068318089cb586cb2600}\label{orders_8h_a51c15ed40dbb068318089cb586cb2600}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+set\+\_\+order\+\_\+at\+\_\+floor@{orders\+\_\+set\+\_\+order\+\_\+at\+\_\+floor}}
+\index{orders\+\_\+set\+\_\+order\+\_\+at\+\_\+floor@{orders\+\_\+set\+\_\+order\+\_\+at\+\_\+floor}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+set\+\_\+order\+\_\+at\+\_\+floor()}{orders\_set\_order\_at\_floor()}}
+{\footnotesize\ttfamily void orders\+\_\+set\+\_\+order\+\_\+at\+\_\+floor (\begin{DoxyParamCaption}\item[{int}]{floor,  }\item[{int}]{order }\end{DoxyParamCaption})}
 
 
 
@@ -334,11 +333,11 @@ Sets the value of elevator\+\_\+order\+\_\+array with index {\ttfamily floor} to
 
 Definition at line 25 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a4cf3627d1c6a40e9af29458da858558b}\label{orders_8h_a4cf3627d1c6a40e9af29458da858558b}} 
-\index{orders.\+h@{orders.\+h}!set\+\_\+order\+\_\+down@{set\+\_\+order\+\_\+down}}
-\index{set\+\_\+order\+\_\+down@{set\+\_\+order\+\_\+down}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{set\+\_\+order\+\_\+down()}{set\_order\_down()}}
-{\footnotesize\ttfamily void set\+\_\+order\+\_\+down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a7d9a073c3f2b0c3b771db04342e8c732}\label{orders_8h_a7d9a073c3f2b0c3b771db04342e8c732}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+set\+\_\+order\+\_\+down@{orders\+\_\+set\+\_\+order\+\_\+down}}
+\index{orders\+\_\+set\+\_\+order\+\_\+down@{orders\+\_\+set\+\_\+order\+\_\+down}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+set\+\_\+order\+\_\+down()}{orders\_set\_order\_down()}}
+{\footnotesize\ttfamily void orders\+\_\+set\+\_\+order\+\_\+down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -348,11 +347,11 @@ Updates elevator\+\_\+order\+\_\+array if any of the order down buttons are pres
 
 Definition at line 43 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_ad81206d15e03830095bf5012a7ec48e0}\label{orders_8h_ad81206d15e03830095bf5012a7ec48e0}} 
-\index{orders.\+h@{orders.\+h}!set\+\_\+order\+\_\+inside@{set\+\_\+order\+\_\+inside}}
-\index{set\+\_\+order\+\_\+inside@{set\+\_\+order\+\_\+inside}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{set\+\_\+order\+\_\+inside()}{set\_order\_inside()}}
-{\footnotesize\ttfamily void set\+\_\+order\+\_\+inside (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a3137bab280b8aa973bd06d366ceab7d9}\label{orders_8h_a3137bab280b8aa973bd06d366ceab7d9}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+set\+\_\+order\+\_\+inside@{orders\+\_\+set\+\_\+order\+\_\+inside}}
+\index{orders\+\_\+set\+\_\+order\+\_\+inside@{orders\+\_\+set\+\_\+order\+\_\+inside}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+set\+\_\+order\+\_\+inside()}{orders\_set\_order\_inside()}}
+{\footnotesize\ttfamily void orders\+\_\+set\+\_\+order\+\_\+inside (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -362,11 +361,11 @@ Updates elevator\+\_\+order\+\_\+array if any of the order inside buttons are pr
 
 Definition at line 56 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_ae53d74727711dab412fb4c01aaa029da}\label{orders_8h_ae53d74727711dab412fb4c01aaa029da}} 
-\index{orders.\+h@{orders.\+h}!set\+\_\+order\+\_\+up@{set\+\_\+order\+\_\+up}}
-\index{set\+\_\+order\+\_\+up@{set\+\_\+order\+\_\+up}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{set\+\_\+order\+\_\+up()}{set\_order\_up()}}
-{\footnotesize\ttfamily void set\+\_\+order\+\_\+up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a0c5303bf6bae07c7c18025d5cef4516e}\label{orders_8h_a0c5303bf6bae07c7c18025d5cef4516e}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+set\+\_\+order\+\_\+up@{orders\+\_\+set\+\_\+order\+\_\+up}}
+\index{orders\+\_\+set\+\_\+order\+\_\+up@{orders\+\_\+set\+\_\+order\+\_\+up}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+set\+\_\+order\+\_\+up()}{orders\_set\_order\_up()}}
+{\footnotesize\ttfamily void orders\+\_\+set\+\_\+order\+\_\+up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -376,11 +375,11 @@ Updates elevator\+\_\+order\+\_\+array if any of the order up buttons are presse
 
 Definition at line 30 of file orders.\+c.
 
-\mbox{\Hypertarget{orders_8h_a1ae3ab02b290c9ba95abb9a3fc5bdbd1}\label{orders_8h_a1ae3ab02b290c9ba95abb9a3fc5bdbd1}} 
-\index{orders.\+h@{orders.\+h}!update\+\_\+current\+\_\+direction@{update\+\_\+current\+\_\+direction}}
-\index{update\+\_\+current\+\_\+direction@{update\+\_\+current\+\_\+direction}!orders.\+h@{orders.\+h}}
-\subsubsection{\texorpdfstring{update\+\_\+current\+\_\+direction()}{update\_current\_direction()}}
-{\footnotesize\ttfamily void update\+\_\+current\+\_\+direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{orders_8h_a554caa4c9a00d69d4785d08cb1f9fea8}\label{orders_8h_a554caa4c9a00d69d4785d08cb1f9fea8}} 
+\index{orders.\+h@{orders.\+h}!orders\+\_\+update\+\_\+current\+\_\+direction@{orders\+\_\+update\+\_\+current\+\_\+direction}}
+\index{orders\+\_\+update\+\_\+current\+\_\+direction@{orders\+\_\+update\+\_\+current\+\_\+direction}!orders.\+h@{orders.\+h}}
+\subsubsection{\texorpdfstring{orders\+\_\+update\+\_\+current\+\_\+direction()}{orders\_update\_current\_direction()}}
+{\footnotesize\ttfamily void orders\+\_\+update\+\_\+current\+\_\+direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -388,5 +387,5 @@ Updates current\+\_\+direction based on existing orders, current\+\_\+direction 
 
 
 
-Definition at line 102 of file orders.\+c.
+Definition at line 104 of file orders.\+c.
 

@@ -74,9 +74,10 @@ void elevator_run_elevator(){
     int stopped_while_obstructed;
 
     while (1){
+        elevator_update_current_floor();
         lights_set_and_clear_lights();
         orders_set_all_orders();
-        elevator_update_current_floor();
+
         switch (state)
         {
         case IDLE:
@@ -93,9 +94,6 @@ void elevator_run_elevator(){
             break;
 
         case RUNNING:
-            lights_set_and_clear_lights();
-            orders_set_all_orders();
-            elevator_update_current_floor();
             if(hardware_read_stop_signal()){
                 state = EMERGENCY_STOP;
             } else if(orders_check_arrival()){
