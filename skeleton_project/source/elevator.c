@@ -150,6 +150,7 @@ void run_elevator(){
                 
                 while (!timer_check_expired()){
                     handle_lights();
+                    handle_orders();
                     hardware_command_stop_light(hardware_read_stop_signal());
                     if(hardware_read_stop_signal()){
                         stopped_while_open = 1;
