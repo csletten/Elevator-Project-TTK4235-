@@ -32,21 +32,21 @@ typedef enum {
  *
  * @return Return state.
  */
-int get_state();
+int elevator_get_state();
 
 /**
  * @brief Sets the state to @p new_state .  
  * 
  * @param new_state
  */
-void set_state(CurrentState new_state);
+void elevator_set_state(CurrentState new_state);
 
 /**
  * @brief Gets the current floor. 
  *
  * @return Return current_floor.
  */
-int get_current_floor();
+int elevator_get_current_floor();
 
 /**
  * @brief Gets FLOOR_COUNT.
@@ -68,12 +68,12 @@ int get_BUTTON_COUNT();
  *
  * @return Return current floor. Return 0 if between floors.
  */
-int check_floor_number();
+int elevator_one_indexed_floor_number();
 
 /**
- * @brief Updates the current_floor variable to the non-zero return value of check_floor_number()
+ * @brief Updates the current_floor variable to the non-zero return value of elevator_one_indexed_floor_number()
  */
-void update_current_floor();
+void elevator_update_current_floor();
 
 /**
  * @brief Initialises the elevator and runs the elevator to the closest floor below.

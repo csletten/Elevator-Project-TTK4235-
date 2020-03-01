@@ -55,14 +55,14 @@ void clear_order_lights_inside(){
 
 void set_stop_light(){
     if (hardware_read_stop_signal()){
-        set_state(EMERGENCY_STOP);
+        elevator_set_state(EMERGENCY_STOP);
     }
     hardware_command_stop_light(hardware_read_stop_signal());
 }
 
 void set_floor_lights(){
     //printf("Current floor: %d ", current_floor);
-    hardware_command_floor_indicator_on(get_current_floor());
+    hardware_command_floor_indicator_on(elevator_get_current_floor());
 }
 
 void handle_lights(){
