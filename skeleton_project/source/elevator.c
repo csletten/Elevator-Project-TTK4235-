@@ -51,14 +51,12 @@ void elevator_update_current_floor(){
 }
 
 void elevator_startup(){
-    // Initalize hardware
     int error = hardware_init();
     if (error != 0){
         fprintf(stderr, "Unable to initialize hardware\n");
         exit(1);
     }
 
-    // Move down until a floor is reached
     while (elevator_one_indexed_floor_number() == 0){
         hardware_command_movement(HARDWARE_MOVEMENT_DOWN);
     }

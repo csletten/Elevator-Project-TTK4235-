@@ -33,6 +33,5 @@ void timer_test_timer(){
     while(!timer_check_expired()){
         timer_print_current_time();
     }
-    //timer_print_current_time();
     printf("TIMER STOPPED!");
 }

@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "hardware.h"
 #include "elevator.h"
 #include "lights.h"
 #include "orders.h"
@@ -61,7 +60,6 @@ void lights_set_stop_light(){
 }
 
 void lights_set_floor_lights(){
-    //printf("Current floor: %d ", current_floor);
     hardware_command_floor_indicator_on(elevator_get_current_floor());
 }
 

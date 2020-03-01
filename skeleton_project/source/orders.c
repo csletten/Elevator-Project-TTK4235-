@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include "hardware.h"
 #include "elevator.h"
 #include "orders.h"
 
@@ -61,7 +60,6 @@ void orders_set_order_inside(){
     }
 }
 
-//update this name to fexample orders_set_all orders()
 void orders_set_all_orders(){
     orders_set_order_up();
     orders_set_order_down();
@@ -100,7 +98,6 @@ int orders_get_order_count(){
     return order_count;
 }
 
-//change name to orders_update_direction()?
 void orders_update_current_direction(){
     if(!orders_get_order_count()){
         current_direction = HARDWARE_MOVEMENT_STOP;
