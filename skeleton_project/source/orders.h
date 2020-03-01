@@ -9,14 +9,14 @@
  *
  * @return Return current_direction.
  */
-int get_current_direction();
+int orders_get_current_direction();
 
 /**
  * @brief Sets current_direction to @p direction .
  *
  * @param direction
  */
-void set_current_direction(int direction);
+void orders_set_current_direction(int direction);
 
 
 /**
@@ -26,7 +26,7 @@ void set_current_direction(int direction);
  * 
  * @return Return the value of elevator_order_array with selected index.
  */
-int get_order_at_floor(int floor);
+int orders_get_order_at_floor(int floor);
 
 
 /**
@@ -35,7 +35,7 @@ int get_order_at_floor(int floor);
  * @param floor
  * @param order
  */
-void set_order_at_floor(int floor, int order);
+void orders_set_order_at_floor(int floor, int order);
 
 
 /**
@@ -57,7 +57,7 @@ void orders_set_order_inside();
 /**
  * @brief Updates elevator_order_array if any order buttons are pressed.
  */
-void handle_orders();
+void orders_set_all_orders();
 
 
 /**
@@ -122,12 +122,12 @@ int orders_check_arrival();
 /**
  * @brief Clears all existing orders in elevator_order_array.
  */
-void clear_all_orders();
+void orders_clear_all_orders();
 
 /**
  * @brief Prints all existing orders in elevator_order_array.
  */
-void print_all_orders();
+void orders_print_all_orders();
 
 /**
  * @brief Checks if there are any orders at at @p floor .
@@ -136,4 +136,4 @@ void print_all_orders();
  * 
  * @return Return 1 if order at requested floor. Return 0 otherwise.
  */
-int bool_order_at_floor(int floor);
+int orders_bool_order_at_floor(int floor);

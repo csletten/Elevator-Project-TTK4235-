@@ -53,14 +53,14 @@ int elevator_get_current_floor();
  *   
  * @return Returns FLOOR_COUNT.
  */
-int get_FLOOR_COUNT();
+int elevator_get_FLOOR_COUNT();
 
 /**
  * @brief Gets BUTTON_COUNT.
  *    
  * @return Returns BUTTON_COUNT.
  */
-int get_BUTTON_COUNT();
+int elevator_get_BUTTON_COUNT();
 
 
 /**
@@ -83,4 +83,4 @@ void elevator_startup();
 /**
  * @brief Runs the elevator.
  */
-void run_elevator();
+void elevator_run_elevator();

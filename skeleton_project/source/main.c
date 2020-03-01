@@ -12,6 +12,6 @@ static void sigint_handler(int sig){
 
 int main(){
     signal(SIGINT, sigint_handler);
-    run_elevator();
+    elevator_run_elevator();
     return 0;
 }
