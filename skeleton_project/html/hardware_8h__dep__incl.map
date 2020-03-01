@@ -1,7 +1,7 @@
 <map id="source/hardware.h" name="source/hardware.h">
-<area shape="rect" id="node2" href="$elevator_8c_source.html" title="source/elevator.c" alt="" coords="5,155,128,181"/>
-<area shape="rect" id="node3" href="$elevator_8h_source.html" title="source/elevator.h" alt="" coords="144,80,267,107"/>
-<area shape="rect" id="node4" href="$lights_8c_source.html" title="source/lights.c" alt="" coords="152,155,259,181"/>
-<area shape="rect" id="node5" href="$main_8c_source.html" title="source/main.c" alt="" coords="283,155,387,181"/>
-<area shape="rect" id="node6" href="$orders_8c_source.html" title="source/orders.c" alt="" coords="411,155,523,181"/>
+<area shape="rect" id="node2" href="$elevator_8c.html" title="source/elevator.c" alt="" coords="5,155,128,181"/>
+<area shape="rect" id="node3" href="$elevator_8h.html" title="Running elevator and updating states. " alt="" coords="144,80,267,107"/>
+<area shape="rect" id="node4" href="$lights_8c.html" title="source/lights.c" alt="" coords="152,155,259,181"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="source/main.c" alt="" coords="283,155,387,181"/>
+<area shape="rect" id="node6" href="$orders_8c.html" title="source/orders.c" alt="" coords="411,155,523,181"/>
 </map>

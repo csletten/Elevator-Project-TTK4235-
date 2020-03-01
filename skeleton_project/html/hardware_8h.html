@@ -78,11 +78,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="hardware_8h__dep__incl.png" border="0" usemap="#source_2hardware_8hdep" alt=""/></div>
 <map name="source_2hardware_8hdep" id="source_2hardware_8hdep">
-<area shape="rect" id="node2" href="elevator_8c_source.html" title="source/elevator.c" alt="" coords="5,155,128,181"/>
-<area shape="rect" id="node3" href="elevator_8h_source.html" title="source/elevator.h" alt="" coords="144,80,267,107"/>
-<area shape="rect" id="node4" href="lights_8c_source.html" title="source/lights.c" alt="" coords="152,155,259,181"/>
-<area shape="rect" id="node5" href="main_8c_source.html" title="source/main.c" alt="" coords="283,155,387,181"/>
-<area shape="rect" id="node6" href="orders_8c_source.html" title="source/orders.c" alt="" coords="411,155,523,181"/>
+<area shape="rect" id="node2" href="elevator_8c.html" title="source/elevator.c" alt="" coords="5,155,128,181"/>
+<area shape="rect" id="node3" href="elevator_8h.html" title="Running elevator and updating states. " alt="" coords="144,80,267,107"/>
+<area shape="rect" id="node4" href="lights_8c.html" title="source/lights.c" alt="" coords="152,155,259,181"/>
+<area shape="rect" id="node5" href="main_8c.html" title="source/main.c" alt="" coords="283,155,387,181"/>
+<area shape="rect" id="node6" href="orders_8c.html" title="source/orders.c" alt="" coords="411,155,523,181"/>
 </map>
 </div>
 </div>
@@ -90,22 +90,21 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ae9e42615eade15633bd8c03b7a271a00"><td class="memItemLeft" align="right" valign="top"><a id="ae9e42615eade15633bd8c03b7a271a00"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>HARDWARE_NUMBER_OF_FLOORS</b>&#160;&#160;&#160;4</td></tr>
+<tr class="memitem:ae9e42615eade15633bd8c03b7a271a00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hardware_8h.html#ae9e42615eade15633bd8c03b7a271a00">HARDWARE_NUMBER_OF_FLOORS</a>&#160;&#160;&#160;4</td></tr>
 <tr class="separator:ae9e42615eade15633bd8c03b7a271a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a2167c399a24df296afc432bcb88228af"><td class="memItemLeft" align="right" valign="top"><a id="a2167c399a24df296afc432bcb88228af"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hardware_8h.html#a2167c399a24df296afc432bcb88228af">HardwareMovement</a> { <b>HARDWARE_MOVEMENT_UP</b>, 
-<b>HARDWARE_MOVEMENT_STOP</b>, 
-<b>HARDWARE_MOVEMENT_DOWN</b>
- }<tr class="memdesc:a2167c399a24df296afc432bcb88228af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement type used in <code>hardware_command_movement</code>. <br /></td></tr>
+<tr class="memitem:a2167c399a24df296afc432bcb88228af"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hardware_8h.html#a2167c399a24df296afc432bcb88228af">HardwareMovement</a> { <a class="el" href="hardware_8h.html#a2167c399a24df296afc432bcb88228afaee0d800f6eabb40ed7fc57fdfa3956cf">HARDWARE_MOVEMENT_UP</a>, 
+<a class="el" href="hardware_8h.html#a2167c399a24df296afc432bcb88228afa0c5a09f827e65f3bb650d478638dd1c6">HARDWARE_MOVEMENT_STOP</a>, 
+<a class="el" href="hardware_8h.html#a2167c399a24df296afc432bcb88228afa1e24e10c9811fb49a390c4027444ab74">HARDWARE_MOVEMENT_DOWN</a>
+ }<tr class="memdesc:a2167c399a24df296afc432bcb88228af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement type used in <code>hardware_command_movement</code>.  <a href="hardware_8h.html#a2167c399a24df296afc432bcb88228af">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a2167c399a24df296afc432bcb88228af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a796a8de8ce0ae769d7dbd3327a7bdbe7"><td class="memItemLeft" align="right" valign="top"><a id="a796a8de8ce0ae769d7dbd3327a7bdbe7"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hardware_8h.html#a796a8de8ce0ae769d7dbd3327a7bdbe7">HardwareOrder</a> { <b>HARDWARE_ORDER_UP</b>, 
-<b>HARDWARE_ORDER_INSIDE</b>, 
-<b>HARDWARE_ORDER_DOWN</b>
- }<tr class="memdesc:a796a8de8ce0ae769d7dbd3327a7bdbe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Order type used in <code>hardware_read_order</code> and in <code>hardware_command_order_light</code>. <br /></td></tr>
+<tr class="memitem:a796a8de8ce0ae769d7dbd3327a7bdbe7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hardware_8h.html#a796a8de8ce0ae769d7dbd3327a7bdbe7">HardwareOrder</a> { <a class="el" href="hardware_8h.html#a796a8de8ce0ae769d7dbd3327a7bdbe7a04897c42fba48a7634f124b54f2c2e86">HARDWARE_ORDER_UP</a>, 
+<a class="el" href="hardware_8h.html#a796a8de8ce0ae769d7dbd3327a7bdbe7a98a032e849f3efead8f35958cb8daeb6">HARDWARE_ORDER_INSIDE</a>, 
+<a class="el" href="hardware_8h.html#a796a8de8ce0ae769d7dbd3327a7bdbe7acfd939b1a6090d92033d621630f85603">HARDWARE_ORDER_DOWN</a>
+ }<tr class="memdesc:a796a8de8ce0ae769d7dbd3327a7bdbe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Order type used in <code>hardware_read_order</code> and in <code>hardware_command_order_light</code>.  <a href="hardware_8h.html#a796a8de8ce0ae769d7dbd3327a7bdbe7">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a796a8de8ce0ae769d7dbd3327a7bdbe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -148,7 +147,71 @@ Functions</h2></td></tr>
 <p>Kolbjørn Austreng </p>
 
 <p class="definition">Definition in file <a class="el" href="hardware_8h_source.html">hardware.h</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ae9e42615eade15633bd8c03b7a271a00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9e42615eade15633bd8c03b7a271a00">&#9670;&nbsp;</a></span>HARDWARE_NUMBER_OF_FLOORS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HARDWARE_NUMBER_OF_FLOORS&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="hardware_8h_source.html#l00012">12</a> of file <a class="el" href="hardware_8h_source.html">hardware.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a2167c399a24df296afc432bcb88228af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2167c399a24df296afc432bcb88228af">&#9670;&nbsp;</a></span>HardwareMovement</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="hardware_8h.html#a2167c399a24df296afc432bcb88228af">HardwareMovement</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Movement type used in <code>hardware_command_movement</code>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2167c399a24df296afc432bcb88228afaee0d800f6eabb40ed7fc57fdfa3956cf"></a>HARDWARE_MOVEMENT_UP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2167c399a24df296afc432bcb88228afa0c5a09f827e65f3bb650d478638dd1c6"></a>HARDWARE_MOVEMENT_STOP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2167c399a24df296afc432bcb88228afa1e24e10c9811fb49a390c4027444ab74"></a>HARDWARE_MOVEMENT_DOWN&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="hardware_8h_source.html#l00017">17</a> of file <a class="el" href="hardware_8h_source.html">hardware.h</a>.</p>
+
+</div>
+</div>
+<a id="a796a8de8ce0ae769d7dbd3327a7bdbe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a796a8de8ce0ae769d7dbd3327a7bdbe7">&#9670;&nbsp;</a></span>HardwareOrder</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="hardware_8h.html#a796a8de8ce0ae769d7dbd3327a7bdbe7">HardwareOrder</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Order type used in <code>hardware_read_order</code> and in <code>hardware_command_order_light</code>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a796a8de8ce0ae769d7dbd3327a7bdbe7a04897c42fba48a7634f124b54f2c2e86"></a>HARDWARE_ORDER_UP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a796a8de8ce0ae769d7dbd3327a7bdbe7a98a032e849f3efead8f35958cb8daeb6"></a>HARDWARE_ORDER_INSIDE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a796a8de8ce0ae769d7dbd3327a7bdbe7acfd939b1a6090d92033d621630f85603"></a>HARDWARE_ORDER_DOWN&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="hardware_8h_source.html#l00027">27</a> of file <a class="el" href="hardware_8h_source.html">hardware.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a80d99ddaa8e7b58c9a88b60ea553c1b6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a80d99ddaa8e7b58c9a88b60ea553c1b6">&#9670;&nbsp;</a></span>hardware_command_door_open()</h2>
 

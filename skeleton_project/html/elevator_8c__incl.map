@@ -1,0 +1,7 @@
+<map id="source/elevator.c" name="source/elevator.c">
+<area shape="rect" id="node4" href="$hardware_8h.html" title="Driver for the elevator hardware. " alt="" coords="47,155,133,181"/>
+<area shape="rect" id="node5" href="$elevator_8h.html" title="Running elevator and updating states. " alt="" coords="5,80,84,107"/>
+<area shape="rect" id="node6" href="$orders_8h.html" title="Order handling, including the queue system. " alt="" coords="298,80,367,107"/>
+<area shape="rect" id="node7" href="$lights_8h.html" title="All functions handling the lights. " alt="" coords="391,80,455,107"/>
+<area shape="rect" id="node8" href="$timer_8h.html" title="Time functions. " alt="" coords="211,80,273,107"/>
+</map>
