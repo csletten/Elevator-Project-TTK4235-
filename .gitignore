@@ -1,0 +1,10 @@
+*.o
+elevator
+**/build
+**/vscode
+html/
+latex/
+.vscode/settings.json
+source/.DS_Store
+.DS_Store
+.DS_Store
